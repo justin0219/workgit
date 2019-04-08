@@ -1,3 +1,46 @@
 <resources>
-    <string name="app_name">DeviceInfoCollector</string>
+    <string name="app_name">Spy all</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="details">details</string>
+    <string name="full_plan"><![CDATA[<p>系统
+</p>
+<ul>
+  <li>Access to entire 5,000+ course library</li>
+  <li>Learning paths</li>
+  <li>Skill measurement</li>
+  <li>Exercise files</li>
+  <li>Course learning checks</li>
+  <li>Completion certificates</li>
+  <li>Mobile apps</li>
+  <li>Offline viewing</li>
+</ul>]]></string>
+
+    <string name="first_plan"><![CDATA[<p>用户
+</p>
+<ul>
+  <li>Access to entire 5,000+ course library</li>
+  <li>Learning paths</li>
+</ul>]]></string>
+
+    <string name="second_plan"><![CDATA[<p>App
+</p>
+<ul>
+  <li>Access to entire 5,000+ course library</li>
+  <li>Learning paths</li>
+  <li>Mobile apps</li>
+  <li>Offline viewing</li>
+</ul>]]></string>
+
+    <string name="third_plan"><![CDATA[<p>位置信息
+</p>
+<ul>
+  <li>Access to entire 5,000+ course library</li>
+  <li>Learning paths</li>
+   <li>Course learning checks</li>
+  <li>Completion certificates</li>
+  <li>Mobile apps</li>
+  <li>Offline viewing</li>
+</ul>]]></string>
+
+
 </resources>
