@@ -3,6 +3,7 @@ package com.example.deviceinfocollector.systeminfo;
 import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
 import android.support.v7.app.AppCompatActivity;
@@ -17,8 +18,17 @@ import java.io.IOException;
 import static android.content.Context.TELEPHONY_SERVICE;
 
 /**
- * @author wh1t3P1g
+ * @author Frank
  * @since 2019-04-09
+ * description: 1. 修复换行；2. System infor信息填充；
+ *
+ * @author wh1t3P1g
+ * * @since 2019-04-09
+ * * description: 1. 填充UI； 2. 硬件信息获取； 3. 硬件信息填充；
+ *
+ * * @author Frank
+ *  * @since 2019-04-09
+ *  * description: 1. 系统信息获取；
  */
 public class SystemInfo {
 
@@ -28,23 +38,29 @@ public class SystemInfo {
         this.mainActivity = mainActivity;
     }
 
-    public String getAllInfo() {
-        // TODO Auto-generated method stub
-//        getAvailMemory();// 获取手机可用内存大小
-//        getTotalMemory();//获取总内存大小
-//        getHeightAndWidth();//获取屏幕宽高
-//        getInfo();//获取IMEI号，IESI号，手机型号
-//        getMacAddress();//获取手机型号
-//        getCpuInfo();//手机CPU信息
-//        getPackage();//获取软件包名,版本名，版本号
-//        isRoot();//手机是否root
+    public String getSystemInfo() {
+
         String text = getHeightAndWidth() +
-                "\n" + getTotalMemory() +
-                "\n" + getAvailMemory() +
-                "\n" + getInfo() +
-                "\n" + getCpuInfo() +
-                "\n" + getPackage() +
-                "\n" + isRoot();
+                "<br/>" + getTotalMemory() +
+                "<br/>" + getAvailMemory() +
+                "<br/>" + getInfo() +
+                "<br/>" + getCpuInfo() +
+                "<br/>" + getPackage() +
+                "<br/>" + isRoot();
+
+        return text;
+
+    }
+
+    public String getAllInfo() {
+
+        String text = getHeightAndWidth() +
+                "<br/>" + getTotalMemory() +
+                "<br/>" + getAvailMemory() +
+                "<br/>" + getInfo() +
+                "<br/>" + getCpuInfo() +
+                "<br/>" + getPackage() +
+                "<br/>" + isRoot();
 
         return text;
 
@@ -60,7 +76,7 @@ public class SystemInfo {
                     pkName, 0).versionName;
             int versionCode = this.mainActivity.getPackageManager()
                     .getPackageInfo(pkName, 0).versionCode;
-            return "Package:" + pkName + "\nversionName:" + versionName + "\nversionCode:" + versionCode;
+            return "软件包: " + pkName + "<br/>版本名: " + versionName + "&nbsp;&nbsp;版本号: " + versionCode;
         } catch (Exception e) {
         }
         return null;
@@ -73,12 +89,12 @@ public class SystemInfo {
      */
     private String isRoot() {
 
-        String bool = "Root:false";
+        String bool = "Root: 未 Root";
         try {
             if ((!new File("/system/bin/su").exists()) && (!new File("/system/xbin/su").exists())) {
-                bool = "Root:false";
+                bool = "Root: 未 Root";
             } else {
-                bool = "Root:true";
+                bool = "Root: 已 Root";
             }
         } catch (Exception e) {
         }
@@ -94,7 +110,7 @@ public class SystemInfo {
         StatFs stat = new StatFs(path.getPath());
         long blockSize = stat.getBlockSize();
         long availableBlocks = stat.getAvailableBlocks();
-        return "当前可用内存：" + Formatter.formatFileSize(this.mainActivity, blockSize * availableBlocks);
+        return "当前可用内存: " + Formatter.formatFileSize(this.mainActivity, blockSize * availableBlocks);
     }
 
 
@@ -117,7 +133,7 @@ public class SystemInfo {
             localBufferedReader.close();
         } catch (IOException e) {
         }
-        return "总内存大小：" + Formatter.formatFileSize(this.mainActivity.getBaseContext(), initial_memory);// Byte转换为KB或者MB，内存大小规格化
+        return "总内存大小: " + Formatter.formatFileSize(this.mainActivity.getBaseContext(), initial_memory);// Byte转换为KB或者MB，内存大小规格化
     }
 
     /**
@@ -128,18 +144,22 @@ public class SystemInfo {
     public String getHeightAndWidth() {
         int width = this.mainActivity.getWindowManager().getDefaultDisplay().getWidth();
         int heigth = this.mainActivity.getWindowManager().getDefaultDisplay().getHeight();
-        String str = "Width:" + width + "\nHeight:" + heigth + "";
+        String str = "屏幕宽度: " + width + "&nbsp;&nbsp;屏幕高度: " + heigth + "";
         return str;
     }
 
     /**
-     * 获取IMEI号，IESI号，手机型号
+     * 获取手机型号
      */
     private String getInfo() {
         TelephonyManager mTm = (TelephonyManager) this.mainActivity.getSystemService(TELEPHONY_SERVICE);
-        String mtype = android.os.Build.MODEL; // 手机型号
+        String muser = Build.USER; //设备用户名
+        String mtype = android.os.Build.MODEL; // 系统型号
         String mtyb = android.os.Build.BRAND;//手机品牌
-        return "手机型号：" + mtype + "\n手机品牌：" + mtyb;
+        String mdrive = android.os.Build.DEVICE;//设备驱动
+        String msvs = android.os.Build.VERSION.RELEASE; //系统版本字符串
+        String msapi = android.os.Build.VERSION.SDK; //系统API
+        return muser +"<br/>系统型号: " + mtype + "<br/>系统版本: " + msvs + "<br/>系统API版本: " + msvs + "<br/>手机品牌: " + mtyb + "<br/>设备驱动: " + mdrive ;
     }
 
     /**
@@ -152,7 +172,7 @@ public class SystemInfo {
         ;
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         result = wifiInfo.getMacAddress();
-        return "手机macAdd:" + result;
+        return "手机macAdd: " + result;
     }
 
     private String getCpuInfo() {
@@ -174,6 +194,6 @@ public class SystemInfo {
             localBufferedReader.close();
         } catch (IOException e) {
         }
-        return "CPU频率：" + cpuInfo[1];
+        return "CPU频率: " + cpuInfo[1];
     }
 }

@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         final ArrayList<Item> arrayList = new ArrayList<>();
         CPUInfo cpuInfo = new CPUInfo();
         SystemInfo systemInfo = new SystemInfo(MainActivity.this);
-        arrayList.add(new Item("系统信息", getString(R.string.first_plan)));
+        arrayList.add(new Item("系统信息", systemInfo.getSystemInfo()));
         arrayList.add(new Item("用户信息", getString(R.string.second_plan)));
         arrayList.add(new Item("App信息", getString(R.string.third_plan)));
         arrayList.add(new Item("位置信息", getString(R.string.full_plan)));
