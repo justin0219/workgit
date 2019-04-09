@@ -28,8 +28,7 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add(new Item("用户信息", getString(R.string.second_plan)));
         arrayList.add(new Item("App信息", getString(R.string.third_plan)));
         arrayList.add(new Item("位置信息", getString(R.string.full_plan)));
-        arrayList.add(new Item("测试", cpuInfo.getCpuInfo()));
-        arrayList.add(new Item("系统测试", systemInfo.getAllInfo()));
+        arrayList.add(new Item("测试", cpuInfo.getInfo()));
         binding.recyclerView.setAdapter(new ExpandableRecyclerViewAdapter(arrayList));
     }
 }

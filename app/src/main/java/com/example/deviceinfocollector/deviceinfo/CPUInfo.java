@@ -1,5 +1,7 @@
 package com.example.deviceinfocollector.deviceinfo;
 
+import github.nisrulz.easydeviceinfo.base.EasyCpuMod;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,6 +11,12 @@ import java.io.IOException;
  * @since 2019-04-09
  */
 public class CPUInfo {
+
+    public String getABIInfo(){
+        EasyCpuMod easyCpuMod = new EasyCpuMod();
+        // 从 Build.SUPPORTED_ABIS 取
+        return easyCpuMod.getStringSupportedABIS();
+    }
 
     public String getCpuInfo(){
         String str1 = "/proc/cpuinfo";
