@@ -7,8 +7,9 @@ import android.support.v7.app.AppCompatActivity;
  * @since 2019-04-09
  */
 public class BaseInfo {
-    String info = "";
-    AppCompatActivity activity;
+
+    private String info;
+    private AppCompatActivity activity;
 
     BaseInfo(AppCompatActivity activity){
         this.activity = activity;
@@ -21,5 +22,17 @@ public class BaseInfo {
 
     public String getInfo(){
         return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public AppCompatActivity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(AppCompatActivity activity) {
+        this.activity = activity;
     }
 }

@@ -13,7 +13,9 @@ import java.io.IOException;
  */
 public class CPUInfo extends BaseInfo{
 
-    public CPUInfo(AppCompatActivity activity) {
+    private String abis;
+
+    CPUInfo(AppCompatActivity activity) {
         super(activity);
     }
 
@@ -21,7 +23,22 @@ public class CPUInfo extends BaseInfo{
     public void init(){
         EasyCpuMod easyCpuMod = new EasyCpuMod();
         // 从 Build.SUPPORTED_ABIS 取
-        this.info = easyCpuMod.getStringSupportedABIS();
+        setAbis(easyCpuMod.getStringSupportedABIS());
+    }
+
+    @Override
+    public String getInfo(){
+        StringBuilder info = new StringBuilder();
+        info.append("CPU: ").append(getAbis()).append("<br/>");
+        return info.toString();
+    }
+
+    public String getAbis() {
+        return abis;
+    }
+
+    public void setAbis(String abis) {
+        this.abis = abis;
     }
 
     public String getCpuInfo(){
