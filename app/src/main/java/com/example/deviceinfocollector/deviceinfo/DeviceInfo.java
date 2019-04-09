@@ -7,12 +7,15 @@ import github.nisrulz.easydeviceinfo.base.EasyDeviceMod;
  * @author wh1t3P1g
  * @since 2019-04-09
  */
-public class DeviceInfo {
+public class DeviceInfo extends BaseInfo{
 
-    public String getAllInfo(AppCompatActivity activity){
-        EasyDeviceMod easyDeviceMod = new EasyDeviceMod(activity);
+    DeviceInfo(AppCompatActivity activity) {
+        super(activity);
+    }
 
-
-        return easyDeviceMod.getBoard();
+    @Override
+    public void init(){
+        EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.activity);
+        this.info = easyDeviceMod.getBoard();
     }
 }

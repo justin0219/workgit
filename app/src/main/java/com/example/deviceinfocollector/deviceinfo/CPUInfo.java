@@ -1,5 +1,6 @@
 package com.example.deviceinfocollector.deviceinfo;
 
+import android.support.v7.app.AppCompatActivity;
 import github.nisrulz.easydeviceinfo.base.EasyCpuMod;
 
 import java.io.BufferedReader;
@@ -10,12 +11,17 @@ import java.io.IOException;
  * @author wh1t3P1g
  * @since 2019-04-09
  */
-public class CPUInfo {
+public class CPUInfo extends BaseInfo{
 
-    public String getABIInfo(){
+    public CPUInfo(AppCompatActivity activity) {
+        super(activity);
+    }
+
+    @Override
+    public void init(){
         EasyCpuMod easyCpuMod = new EasyCpuMod();
         // 从 Build.SUPPORTED_ABIS 取
-        return easyCpuMod.getStringSupportedABIS();
+        this.info = easyCpuMod.getStringSupportedABIS();
     }
 
     public String getCpuInfo(){

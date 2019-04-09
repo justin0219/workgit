@@ -9,7 +9,7 @@ import com.example.deviceinfocollector.systeminfo.SystemInfo;
 import com.wldev.expandablecardviewlist.data.Item;
 import com.wldev.expandablecardviewlist.databinding.ActivityMainBinding;
 import com.wldev.expandablecardviewlist.recyclerview.ExpandableRecyclerViewAdapter;
-import com.example.deviceinfocollector.deviceinfo.*;
+import com.example.deviceinfocollector.deviceinfo.CollectAllInfo;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,13 +29,8 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add(new Item("位置信息", getString(R.string.full_plan)));
 
         // 系统硬件获取测试
-        DeviceInfo deviceInfo = new DeviceInfo();
-        arrayList.add(new Item("测试", deviceInfo.getAllInfo(MainActivity.this)));
-
-
-
-
-
+        CollectAllInfo collectAllInfo = new CollectAllInfo();
+        arrayList.add(new Item("硬件信息", collectAllInfo.getAllInfo(MainActivity.this)));
         binding.recyclerView.setAdapter(new ExpandableRecyclerViewAdapter(arrayList));
     }
 }
