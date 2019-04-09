@@ -12,6 +12,8 @@ import java.text.DecimalFormat;
 public class MemoryInfo extends BaseInfo{
 
     private String totalMemory;
+    private String totalInternalMemorySize;
+    private String totalExternalMemorySize;
 
     MemoryInfo(AppCompatActivity activity) {
         super(activity);
@@ -21,14 +23,18 @@ public class MemoryInfo extends BaseInfo{
     @Override
     public void init() {
         EasyMemoryMod easyMemoryMod = new EasyMemoryMod(getActivity());
-        String memory = new DecimalFormat(".00").format(easyMemoryMod.convertToGb(easyMemoryMod.getTotalRAM()));
-        setTotalMemory(memory+"Gb");
+
+        setTotalMemory(easyMemoryMod.convertToGb(easyMemoryMod.getTotalRAM()));
+        setTotalInternalMemorySize(easyMemoryMod.convertToGb(easyMemoryMod.getTotalInternalMemorySize()));
+        setTotalExternalMemorySize(easyMemoryMod.convertToGb(easyMemoryMod.getTotalExternalMemorySize()));
     }
 
     @Override
     public String getInfo() {
         StringBuilder info = new StringBuilder();
         info.append("TotalMemory: ").append(getTotalMemory()).append("<br/>");
+        info.append("TotalExternalMemorySize: ").append(getTotalExternalMemorySize()).append("<br/>");
+        info.append("TotalInternalMemorySize: ").append(getTotalInternalMemorySize()).append("<br/>");
         return info.toString();
     }
 
@@ -36,7 +42,26 @@ public class MemoryInfo extends BaseInfo{
         return totalMemory;
     }
 
-    public void setTotalMemory(String totalMemory) {
-        this.totalMemory = totalMemory;
+    public void setTotalMemory(float totalMemory) {
+        String memory = new DecimalFormat(".00").format(totalMemory);
+        this.totalMemory = memory+"Gb";
+    }
+
+    public String getTotalInternalMemorySize() {
+        return totalInternalMemorySize;
+    }
+
+    public void setTotalInternalMemorySize(float totalInternalMemorySize) {
+        String memory = new DecimalFormat(".00").format(totalInternalMemorySize);
+        this.totalInternalMemorySize = memory+"Gb";
+    }
+
+    public String getTotalExternalMemorySize() {
+        return totalExternalMemorySize;
+    }
+
+    public void setTotalExternalMemorySize(float totalExternalMemorySize) {
+        String memory = new DecimalFormat(".00").format(totalExternalMemorySize);
+        this.totalExternalMemorySize = memory+"Gb";
     }
 }
