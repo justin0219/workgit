@@ -1,5 +1,6 @@
 package com.example.deviceinfocollector.systeminfo;
 
+
 import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -14,6 +15,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
+import com.example.deviceinfocollector.deviceinfo.DeviceInfo;
+import github.nisrulz.easydeviceinfo.base.EasyDeviceMod;
 
 import static android.content.Context.TELEPHONY_SERVICE;
 
@@ -41,50 +45,94 @@ public class SystemInfo {
     public String getSystemInfo() {
 
         String text = getHeight() +
-//                "<br/>" + getTotalMemory() +
                 "<br/>" + getWidth() +
                 "<br/>" + getAvailMemory() +
                 "<br/>" + getInfo() +
+                "<br/>" + getDriveInfo() +
                 "<br/>" + getSInfo() +
+                "<br/>" + getSystemAPInfo() +
+                "<br/>" + getVersionStringInfo() +
+                "<br/>" + getProductInfo() +
+                "<br/>" + getBoardInfo() +
                 "<br/>" + getUInfo() +
                 "<br/>" + getCpuInfo() +
-                "<br/>" + getPackage() +
-                "<br/>" + isRoot();
+                "<br/>" + getSoftPackage() +
+                "<br/>" + getVersionNumber() +
+                "<br/>" + isRoot() +
+                "<br/>" + getBrandInfo() +
+                "<br/>" + getHostInfo() +
+                "<br/>" + getTagInfo() +
+                "<br/>" + getFingerprintInfo();
 
         return text;
 
     }
 
-    public String getAllInfo() {
-
-        String text = getHeight() +
-//                "<br/>" + getTotalMemory() +
-                "<br/>" + getWidth() +
-                "<br/>" + getAvailMemory() +
-                "<br/>" + getInfo() +
-                "<br/>" + getCpuInfo() +
-                "<br/>" + getPackage() +
-                "<br/>" + isRoot();
-
-        return text;
-
-    }
     /**
      * 获取软件包名,版本名，版本号
      */
-    private String getPackage() {
+    private String getSoftPackage() {
 
         try {
             String pkName = this.mainActivity.getPackageName();
-            String versionName = this.mainActivity.getPackageManager().getPackageInfo(
-                    pkName, 0).versionName;
-            int versionCode = this.mainActivity.getPackageManager()
-                    .getPackageInfo(pkName, 0).versionCode;
-            return "软件包: " + pkName + "<br/>版本名: " + versionName + "&nbsp;&nbsp;版本号: " + versionCode;
+            return "软件包: " + pkName;
         } catch (Exception e) {
         }
         return null;
     }
+
+
+    private String getVersionNumber() {
+
+        EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
+        String versionCode = easyDeviceMod.getOSVersion();
+        return "版本号: " + versionCode ;
+    }
+
+
+    /**
+     * 获取系统 Product、Board 信息、指纹信息
+     */
+    private String getProductInfo() {
+        EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
+        String OSCodeName = easyDeviceMod.getProduct();
+        return "Product 名称: " + OSCodeName ;
+    }
+
+    private String getBoardInfo() {
+        EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
+        String SBoard = easyDeviceMod.getBoard();
+        return "Board 信息: " + SBoard ;
+    }
+
+    private String getFingerprintInfo() {
+        EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
+        String Finger = easyDeviceMod.getFingerprint();
+        return "指纹信息: " + Finger ;
+    }
+
+    /**
+     * 获取系统 Brand 信息、Host 信息、Tag 信息
+     *
+     */
+    private String getBrandInfo() {
+        EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
+        String Brand = easyDeviceMod.getBuildBrand();
+        return "Brand 信息: " + Brand ;
+    }
+
+    private String getHostInfo() {
+        EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
+        String Host = easyDeviceMod.getBuildHost();
+        return "Host 信息: " + Host ;
+    }
+
+    private String getTagInfo() {
+        EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
+        String Tag = easyDeviceMod.getBuildTags();
+        return "Tag 信息: " + Tag ;
+    }
+
 
     /**
      * 获取手机是否root信息
@@ -166,8 +214,13 @@ public class SystemInfo {
     private String getInfo() {
         TelephonyManager mTm = (TelephonyManager) this.mainActivity.getSystemService(TELEPHONY_SERVICE);
         String mtyb = android.os.Build.BRAND;//手机品牌
+        return "手机品牌: " + mtyb;
+    }
+
+    private String getDriveInfo() {
+        TelephonyManager mTm = (TelephonyManager) this.mainActivity.getSystemService(TELEPHONY_SERVICE);
         String mdrive = android.os.Build.DEVICE;//设备驱动
-        return "手机品牌: " + mtyb + "<br/>设备驱动: " + mdrive ;
+        return "设备驱动: " + mdrive ;
     }
 
 
@@ -184,22 +237,17 @@ public class SystemInfo {
      */
     private String getSInfo() {
         String mtype = android.os.Build.MODEL; // 系统型号
-        String msvs = android.os.Build.VERSION.RELEASE; //系统版本字符串
-        String msapi = android.os.Build.VERSION.SDK; //系统API
-        return "系统型号: " + mtype + "<br/>系统版本: " + msvs + "<br/>系统API版本: " + msapi;
+        return "系统型号: " + mtype;
     }
 
-    /**
-     * 获取手机MAC地址
-     * 只有手机开启wifi才能获取到mac地址
-     */
-    private String getMacAddress() {
-        String result = "";
-        WifiManager wifiManager = (WifiManager) this.mainActivity.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        ;
-        WifiInfo wifiInfo = wifiManager.getConnectionInfo();
-        result = wifiInfo.getMacAddress();
-        return "手机 mac: " + result;
+    private String getVersionStringInfo() {
+        String msvs = android.os.Build.VERSION.RELEASE; //系统版本字符串
+        return "系统版本: 安卓 " + msvs;
+    }
+
+    private String getSystemAPInfo() {
+        String msapi = android.os.Build.VERSION.SDK; //系统API
+        return "系统API版本: " + msapi;
     }
 
     private String getCpuInfo() {
