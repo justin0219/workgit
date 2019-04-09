@@ -40,10 +40,13 @@ public class SystemInfo {
 
     public String getSystemInfo() {
 
-        String text = getHeightAndWidth() +
-                "<br/>" + getTotalMemory() +
+        String text = getHeight() +
+//                "<br/>" + getTotalMemory() +
+                "<br/>" + getWidth() +
                 "<br/>" + getAvailMemory() +
                 "<br/>" + getInfo() +
+                "<br/>" + getSInfo() +
+                "<br/>" + getUInfo() +
                 "<br/>" + getCpuInfo() +
                 "<br/>" + getPackage() +
                 "<br/>" + isRoot();
@@ -54,8 +57,9 @@ public class SystemInfo {
 
     public String getAllInfo() {
 
-        String text = getHeightAndWidth() +
-                "<br/>" + getTotalMemory() +
+        String text = getHeight() +
+//                "<br/>" + getTotalMemory() +
+                "<br/>" + getWidth() +
                 "<br/>" + getAvailMemory() +
                 "<br/>" + getInfo() +
                 "<br/>" + getCpuInfo() +
@@ -141,25 +145,48 @@ public class SystemInfo {
      *
      * @return
      */
-    public String getHeightAndWidth() {
+    public String getHeight() {
         int width = this.mainActivity.getWindowManager().getDefaultDisplay().getWidth();
         int heigth = this.mainActivity.getWindowManager().getDefaultDisplay().getHeight();
-        String str = "屏幕宽度: " + width + "&nbsp;&nbsp;屏幕高度: " + heigth + "";
+        String str = "屏幕高度: " + heigth + "";
         return str;
     }
+
+    public String getWidth() {
+        int width = this.mainActivity.getWindowManager().getDefaultDisplay().getWidth();
+        int heigth = this.mainActivity.getWindowManager().getDefaultDisplay().getHeight();
+        String str = "屏幕宽度: " + width + "";
+        return str;
+    }
+
 
     /**
      * 获取手机型号
      */
     private String getInfo() {
         TelephonyManager mTm = (TelephonyManager) this.mainActivity.getSystemService(TELEPHONY_SERVICE);
-        String muser = Build.USER; //设备用户名
-        String mtype = android.os.Build.MODEL; // 系统型号
         String mtyb = android.os.Build.BRAND;//手机品牌
         String mdrive = android.os.Build.DEVICE;//设备驱动
+        return "手机品牌: " + mtyb + "<br/>设备驱动: " + mdrive ;
+    }
+
+
+    /**
+     * 获取系统用户名
+     */
+    private String getUInfo() {
+        String muser = android.os.Build.USER; //设备用户名
+        return "系统用户名: " + muser ;
+    }
+
+    /**
+     * 获取系统版本
+     */
+    private String getSInfo() {
+        String mtype = android.os.Build.MODEL; // 系统型号
         String msvs = android.os.Build.VERSION.RELEASE; //系统版本字符串
         String msapi = android.os.Build.VERSION.SDK; //系统API
-        return muser +"<br/>系统型号: " + mtype + "<br/>系统版本: " + msvs + "<br/>系统API版本: " + msvs + "<br/>手机品牌: " + mtyb + "<br/>设备驱动: " + mdrive ;
+        return "系统型号: " + mtype + "<br/>系统版本: " + msvs + "<br/>系统API版本: " + msapi;
     }
 
     /**
@@ -172,7 +199,7 @@ public class SystemInfo {
         ;
         WifiInfo wifiInfo = wifiManager.getConnectionInfo();
         result = wifiInfo.getMacAddress();
-        return "手机macAdd: " + result;
+        return "手机 mac: " + result;
     }
 
     private String getCpuInfo() {
