@@ -25,15 +25,15 @@
 
 可获取信息
 
-| 信息                     | 函数                    |
-| ------------------------ | ----------------------- |
-| 是否正在充电             | getIsDeviceCharging()   |
-| 电量百分比               | getBatteryPercentage()  |
-| 电池技术                 | getBatteryTechnology()  |
-| 电池温度                 | getBatteryTemperature() |
-| 电池伏特量               | getBatteryVoltage()     |
-| 电池健康信息             | getBatteryHealth()      |
-| 电池正在通过什么设备充电 | getIsChargingVia()      |
+| 信息                     | 函数                  |
+| ------------------------ | --------------------- |
+| 是否正在充电             | getIsDeviceCharging   |
+| 电量百分比               | getBatteryPercentage  |
+| 电池技术                 | getBatteryTechnology  |
+| 电池温度                 | getBatteryTemperature |
+| 电池伏特量               | getBatteryVoltage     |
+| 电池健康信息             | getBatteryHealth      |
+| 电池正在通过什么设备充电 | getIsChargingVia      |
 
 ### CPU信息
 
@@ -41,9 +41,9 @@
 
 可获取信息
 
-| 信息    | 函数      |
-| ------- | --------- |
-| CPU类型 | getAbis() |
+| 信息    | 函数    |
+| ------- | ------- |
+| CPU类型 | getAbis |
 
 ### 通用设备信息
 
@@ -51,16 +51,16 @@
 
 可获取信息
 
-| 信息           | 函数                 |
-| -------------- | -------------------- |
-| 主板信息       | getBoard()           |
-| 显示屏ID       | getScreenDisplayID() |
-| 无线电硬件版本 | getRadioVer()        |
-| 产品信息       | getProduct()         |
-| 设备信息       | getDevice()          |
-| 硬件信息       | getHardware()        |
-| 引导器信息     | getBootloader()      |
-| 指纹           | getFingerprint()     |
+| 信息           | 函数               |
+| -------------- | ------------------ |
+| 主板信息       | getBoard           |
+| 显示屏ID       | getScreenDisplayID |
+| 无线电硬件版本 | getRadioVer        |
+| 产品信息       | getProduct         |
+| 设备信息       | getDevice          |
+| 硬件信息       | getHardware        |
+| 引导器信息     | getBootloader      |
+| 指纹           | getFingerprint     |
 
 ### 显示屏信息
 
