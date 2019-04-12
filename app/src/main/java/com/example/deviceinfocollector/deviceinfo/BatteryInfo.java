@@ -1,6 +1,7 @@
 package com.example.deviceinfocollector.deviceinfo;
 
 import android.support.v7.app.AppCompatActivity;
+
 import github.nisrulz.easydeviceinfo.base.BatteryHealth;
 import github.nisrulz.easydeviceinfo.base.ChargingVia;
 import github.nisrulz.easydeviceinfo.base.EasyBatteryMod;
@@ -52,51 +53,51 @@ public class BatteryInfo extends BaseInfo {
         return info.toString();
     }
 
-    public String getIsDeviceCharging() {
+    private String getIsDeviceCharging() {
         return isDeviceCharging;
     }
 
-    public void setIsDeviceCharging(Boolean isDeviceCharging) {
-        this.isDeviceCharging = isDeviceCharging?"YES":"NO";
+    private void setIsDeviceCharging(Boolean isDeviceCharging) {
+        this.isDeviceCharging = isDeviceCharging ? "YES" : "NO";
     }
 
-    public String getBatteryPercentage() {
+    private String getBatteryPercentage() {
         return BatteryPercentage;
     }
 
-    public void setBatteryPercentage(int batteryPercentage) {
-        BatteryPercentage = batteryPercentage+"%";
+    private void setBatteryPercentage(int batteryPercentage) {
+        BatteryPercentage = batteryPercentage + "%";
     }
 
-    public String getBatteryTechnology() {
+    private String getBatteryTechnology() {
         return batteryTechnology;
     }
 
-    public void setBatteryTechnology(String batteryTechnology) {
+    private void setBatteryTechnology(String batteryTechnology) {
         this.batteryTechnology = batteryTechnology;
     }
 
-    public String getBatteryTemperature() {
+    private String getBatteryTemperature() {
         return batteryTemperature;
     }
 
-    public void setBatteryTemperature(float batteryTemperature) {
-        this.batteryTemperature = batteryTemperature+"度";
+    private void setBatteryTemperature(float batteryTemperature) {
+        this.batteryTemperature = batteryTemperature + "度";
     }
 
-    public String getBatteryVoltage() {
+    private String getBatteryVoltage() {
         return batteryVoltage;
     }
 
-    public void setBatteryVoltage(int batteryVoltage) {
-        this.batteryVoltage = batteryVoltage/1000+"V";
+    private void setBatteryVoltage(int batteryVoltage) {
+        this.batteryVoltage = batteryVoltage / 1000 + "V";
     }
 
-    public String getBatteryHealth() {
+    private String getBatteryHealth() {
         return batteryHealth;
     }
 
-    public void setBatteryHealth(int batteryHealth) {
+    private void setBatteryHealth(int batteryHealth) {
         switch (batteryHealth) {
             case BatteryHealth.GOOD:
                 this.batteryHealth = "Battery health : Good";
@@ -110,11 +111,11 @@ public class BatteryInfo extends BaseInfo {
         }
     }
 
-    public String getIsChargingVia() {
+    private String getIsChargingVia() {
         return isChargingVia;
     }
 
-    public void setIsChargingVia(int isChargingVia) {
+    private void setIsChargingVia(int isChargingVia) {
         switch (isChargingVia) {
             case ChargingVia.AC:
                 this.isChargingVia = "Device charging via AC";

@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
  */
 public class CollectAllInfo {
 
-    public String getAllInfo(AppCompatActivity activity){
+    public String getAllInfo(AppCompatActivity activity) {
         StringBuilder info = new StringBuilder();
         CPUInfo cpuInfo = new CPUInfo(activity);
         info.append(cpuInfo.getInfo()).append("<br/>");

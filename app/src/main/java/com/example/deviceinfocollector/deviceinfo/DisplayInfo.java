@@ -1,6 +1,7 @@
 package com.example.deviceinfocollector.deviceinfo;
 
 import android.support.v7.app.AppCompatActivity;
+
 import github.nisrulz.easydeviceinfo.base.EasyDisplayMod;
 
 /**
@@ -38,11 +39,11 @@ public class DisplayInfo extends BaseInfo {
         return info.toString();
     }
 
-    public String getResolution() {
+    private String getResolution() {
         return resolution;
     }
 
-    public void setResolution(String resolution) {
+    private void setResolution(String resolution) {
         this.resolution = resolution;
     }
 
@@ -54,19 +55,19 @@ public class DisplayInfo extends BaseInfo {
         this.density = density;
     }
 
-    public String getRefreshRate() {
+    private String getRefreshRate() {
         return refreshRate;
     }
 
-    public void setRefreshRate(float refreshRate) {
+    private void setRefreshRate(float refreshRate) {
         this.refreshRate = Float.toString(refreshRate);
     }
 
-    public String getPhysicalSize() {
+    private String getPhysicalSize() {
         return physicalSize;
     }
 
-    public void setPhysicalSize(float physicalSize) {
+    private void setPhysicalSize(float physicalSize) {
         this.physicalSize = Float.toString(physicalSize);
     }
 }

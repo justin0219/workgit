@@ -11,16 +11,16 @@ public class BaseInfo {
     private String info;
     private AppCompatActivity activity;
 
-    BaseInfo(AppCompatActivity activity){
+    BaseInfo(AppCompatActivity activity) {
         this.activity = activity;
         init();
     }
 
-    public void init(){
+    public void init() {
 
     }
 
-    public String getInfo(){
+    public String getInfo() {
         return info;
     }
 

@@ -1,13 +1,14 @@
 package com.example.deviceinfocollector.deviceinfo;
 
 import android.support.v7.app.AppCompatActivity;
+
 import github.nisrulz.easydeviceinfo.base.EasyDeviceMod;
 
 /**
  * @author wh1t3P1g
  * @since 2019-04-09
  */
-public class DeviceInfo extends BaseInfo{
+public class DeviceInfo extends BaseInfo {
 
     private String board;
     private String screenDisplayID;
@@ -23,7 +24,7 @@ public class DeviceInfo extends BaseInfo{
     }
 
     @Override
-    public void init(){
+    public void init() {
         EasyDeviceMod easyDeviceMod = new EasyDeviceMod(getActivity());
         setBoard(easyDeviceMod.getBoard());
         setScreenDisplayID(easyDeviceMod.getScreenDisplayID());
@@ -36,7 +37,7 @@ public class DeviceInfo extends BaseInfo{
     }
 
     @Override
-    public String getInfo(){
+    public String getInfo() {
         StringBuilder info = new StringBuilder();
 
         info.append("Board: ").append(getBoard()).append("<br/>");
@@ -51,67 +52,67 @@ public class DeviceInfo extends BaseInfo{
     }
     // getter and setter
 
-    public String getBoard() {
+    private String getBoard() {
         return board;
     }
 
-    public void setBoard(String board) {
+    private void setBoard(String board) {
         this.board = board;
     }
 
-    public String getScreenDisplayID() {
+    private String getScreenDisplayID() {
         return screenDisplayID;
     }
 
-    public void setScreenDisplayID(String screenDisplayID) {
+    private void setScreenDisplayID(String screenDisplayID) {
         this.screenDisplayID = screenDisplayID;
     }
 
-    public String getRadioVer() {
+    private String getRadioVer() {
         return radioVer;
     }
 
-    public void setRadioVer(String radioVer) {
+    private void setRadioVer(String radioVer) {
         this.radioVer = radioVer;
     }
 
-    public String getProduct() {
+    private String getProduct() {
         return product;
     }
 
-    public void setProduct(String product) {
+    private void setProduct(String product) {
         this.product = product;
     }
 
-    public String getDevice() {
+    private String getDevice() {
         return device;
     }
 
-    public void setDevice(String device) {
+    private void setDevice(String device) {
         this.device = device;
     }
 
-    public String getHardware() {
+    private String getHardware() {
         return hardware;
     }
 
-    public void setHardware(String hardware) {
+    private void setHardware(String hardware) {
         this.hardware = hardware;
     }
 
-    public String getBootloader() {
+    private String getBootloader() {
         return bootloader;
     }
 
-    public void setBootloader(String bootloader) {
+    private void setBootloader(String bootloader) {
         this.bootloader = bootloader;
     }
 
-    public String getFingerprint() {
+    private String getFingerprint() {
         return fingerprint;
     }
 
-    public void setFingerprint(String fingerprint) {
+    private void setFingerprint(String fingerprint) {
         this.fingerprint = fingerprint;
     }
 }

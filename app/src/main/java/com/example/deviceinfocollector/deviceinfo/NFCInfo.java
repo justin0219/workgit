@@ -1,6 +1,7 @@
 package com.example.deviceinfocollector.deviceinfo;
 
 import android.support.v7.app.AppCompatActivity;
+
 import github.nisrulz.easydeviceinfo.base.EasyNfcMod;
 
 /**
@@ -16,22 +17,22 @@ public class NFCInfo extends BaseInfo {
     }
 
     @Override
-    public void init(){
+    public void init() {
         EasyNfcMod easyNfcMod = new EasyNfcMod(getActivity());
-        setNfcStatus(easyNfcMod.isNfcPresent()?"On":"Off");
+        setNfcStatus(easyNfcMod.isNfcPresent() ? "On" : "Off");
     }
 
-    public String getInfo(){
+    public String getInfo() {
         StringBuilder info = new StringBuilder();
         info.append("NFC Status: ").append(getNfcStatus()).append("<br/>");
         return info.toString();
     }
 
-    public String getNfcStatus() {
+    private String getNfcStatus() {
         return nfcStatus;
     }
 
-    public void setNfcStatus(String nfcStatus) {
+    private void setNfcStatus(String nfcStatus) {
         this.nfcStatus = nfcStatus;
     }
 }

@@ -1,14 +1,9 @@
 package com.example.deviceinfocollector.systeminfo;
 
 
-import android.content.Context;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
-import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
 import android.support.v7.app.AppCompatActivity;
-import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
 
 import java.io.BufferedReader;
@@ -16,35 +11,31 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import com.example.deviceinfocollector.deviceinfo.DeviceInfo;
 import github.nisrulz.easydeviceinfo.base.EasyDeviceMod;
-
-import static android.content.Context.TELEPHONY_SERVICE;
 
 /**
  * @author Frank
- * @since 2019-04-09
- * description: 1. 修复换行；2. System infor信息填充；
- *
  * @author wh1t3P1g
  * * @since 2019-04-09
  * * description: 1. 填充UI； 2. 硬件信息获取； 3. 硬件信息填充；
- *
+ * <p>
  * * @author Frank
- *  * @since 2019-04-09
- *  * description: 1. 系统信息获取；
+ * * @since 2019-04-09
+ * * description: 1. 系统信息获取；
+ * @since 2019-04-09
+ * description: 1. 修复换行；2. System infor信息填充；
  */
 public class SystemInfo {
 
     private AppCompatActivity mainActivity;
 
-    public SystemInfo(AppCompatActivity mainActivity){
+    public SystemInfo(AppCompatActivity mainActivity) {
         this.mainActivity = mainActivity;
     }
 
     public String getSystemInfo() {
 
-        String text = getHeight() +
+        return getHeight() +
                 "<br/>" + getWidth() +
                 "<br/>" + getAvailMemory() +
                 "<br/>" + getInfo() +
@@ -64,8 +55,6 @@ public class SystemInfo {
                 "<br/>" + getTagInfo() +
                 "<br/>" + getFingerprintInfo();
 
-        return text;
-
     }
 
     /**
@@ -76,7 +65,7 @@ public class SystemInfo {
         try {
             String pkName = this.mainActivity.getPackageName();
             return "软件包: " + pkName;
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         return null;
     }
@@ -86,7 +75,7 @@ public class SystemInfo {
 
         EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
         String versionCode = easyDeviceMod.getOSVersion();
-        return "版本号: " + versionCode ;
+        return "版本号: " + versionCode;
     }
 
 
@@ -96,48 +85,45 @@ public class SystemInfo {
     private String getProductInfo() {
         EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
         String OSCodeName = easyDeviceMod.getProduct();
-        return "Product 名称: " + OSCodeName ;
+        return "Product 名称: " + OSCodeName;
     }
 
     private String getBoardInfo() {
         EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
         String SBoard = easyDeviceMod.getBoard();
-        return "Board 信息: " + SBoard ;
+        return "Board 信息: " + SBoard;
     }
 
     private String getFingerprintInfo() {
         EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
         String Finger = easyDeviceMod.getFingerprint();
-        return "指纹信息: " + Finger ;
+        return "指纹信息: " + Finger;
     }
 
     /**
      * 获取系统 Brand 信息、Host 信息、Tag 信息
-     *
      */
     private String getBrandInfo() {
         EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
         String Brand = easyDeviceMod.getBuildBrand();
-        return "Brand 信息: " + Brand ;
+        return "Brand 信息: " + Brand;
     }
 
     private String getHostInfo() {
         EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
         String Host = easyDeviceMod.getBuildHost();
-        return "Host 信息: " + Host ;
+        return "Host 信息: " + Host;
     }
 
     private String getTagInfo() {
         EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
         String Tag = easyDeviceMod.getBuildTags();
-        return "Tag 信息: " + Tag ;
+        return "Tag 信息: " + Tag;
     }
 
 
     /**
      * 获取手机是否root信息
-     *
-     * @return
      */
     private String isRoot() {
 
@@ -148,7 +134,7 @@ public class SystemInfo {
             } else {
                 bool = "Root: 已 Root";
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         return bool;
     }
@@ -181,30 +167,24 @@ public class SystemInfo {
             str2 = localBufferedReader.readLine();// 读取meminfo第一行，系统总内存大小
 
             arrayOfString = str2.split("\\s+");
-            initial_memory = Integer.valueOf(arrayOfString[1]).intValue() * 1024;// 获得系统总内存，单位是KB，乘以1024转换为Byte
+            initial_memory = Integer.valueOf(arrayOfString[1]) * 1024;// 获得系统总内存，单位是KB，乘以1024转换为Byte
             localBufferedReader.close();
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
         return "总内存大小: " + Formatter.formatFileSize(this.mainActivity.getBaseContext(), initial_memory);// Byte转换为KB或者MB，内存大小规格化
     }
 
     /**
      * 获得手机屏幕宽高
-     *
-     * @return
      */
     public String getHeight() {
-        int width = this.mainActivity.getWindowManager().getDefaultDisplay().getWidth();
         int heigth = this.mainActivity.getWindowManager().getDefaultDisplay().getHeight();
-        String str = "屏幕高度: " + heigth + "";
-        return str;
+        return "屏幕高度: " + heigth + "";
     }
 
     public String getWidth() {
         int width = this.mainActivity.getWindowManager().getDefaultDisplay().getWidth();
-        int heigth = this.mainActivity.getWindowManager().getDefaultDisplay().getHeight();
-        String str = "屏幕宽度: " + width + "";
-        return str;
+        return "屏幕宽度: " + width + "";
     }
 
 
@@ -212,15 +192,13 @@ public class SystemInfo {
      * 获取手机型号
      */
     private String getInfo() {
-        TelephonyManager mTm = (TelephonyManager) this.mainActivity.getSystemService(TELEPHONY_SERVICE);
         String mtyb = android.os.Build.BRAND;//手机品牌
         return "手机品牌: " + mtyb;
     }
 
     private String getDriveInfo() {
-        TelephonyManager mTm = (TelephonyManager) this.mainActivity.getSystemService(TELEPHONY_SERVICE);
         String mdrive = android.os.Build.DEVICE;//设备驱动
-        return "设备驱动: " + mdrive ;
+        return "设备驱动: " + mdrive;
     }
 
 
@@ -229,7 +207,7 @@ public class SystemInfo {
      */
     private String getUInfo() {
         String muser = android.os.Build.USER; //设备用户名
-        return "系统用户名: " + muser ;
+        return "系统用户名: " + muser;
     }
 
     /**
@@ -252,7 +230,7 @@ public class SystemInfo {
 
     private String getCpuInfo() {
         String str1 = "/proc/cpuinfo";
-        String str2 = "";
+        String str2;
         String[] cpuInfo = {"", ""};  //1-cpu型号  //2-cpu频率
         String[] arrayOfString;
         try {
@@ -267,7 +245,7 @@ public class SystemInfo {
             arrayOfString = str2.split("\\s+");
             cpuInfo[1] += arrayOfString[2];
             localBufferedReader.close();
-        } catch (IOException e) {
+        } catch (IOException ignored) {
         }
         return "CPU频率: " + cpuInfo[1];
     }

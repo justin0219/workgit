@@ -38,29 +38,29 @@ public class MemoryInfo extends BaseInfo{
         return info.toString();
     }
 
-    public String getTotalMemory() {
+    private String getTotalMemory() {
         return totalMemory;
     }
 
-    public void setTotalMemory(float totalMemory) {
+    private void setTotalMemory(float totalMemory) {
         String memory = new DecimalFormat(".00").format(totalMemory);
         this.totalMemory = memory+"Gb";
     }
 
-    public String getTotalInternalMemorySize() {
+    private String getTotalInternalMemorySize() {
         return totalInternalMemorySize;
     }
 
-    public void setTotalInternalMemorySize(float totalInternalMemorySize) {
+    private void setTotalInternalMemorySize(float totalInternalMemorySize) {
         String memory = new DecimalFormat(".00").format(totalInternalMemorySize);
         this.totalInternalMemorySize = memory+"Gb";
     }
 
-    public String getTotalExternalMemorySize() {
+    private String getTotalExternalMemorySize() {
         return totalExternalMemorySize;
     }
 
-    public void setTotalExternalMemorySize(float totalExternalMemorySize) {
+    private void setTotalExternalMemorySize(float totalExternalMemorySize) {
         String memory = new DecimalFormat(".00").format(totalExternalMemorySize);
         this.totalExternalMemorySize = memory+"Gb";
     }

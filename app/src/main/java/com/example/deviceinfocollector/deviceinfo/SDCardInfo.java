@@ -1,6 +1,7 @@
 package com.example.deviceinfocollector.deviceinfo;
 
 import android.support.v7.app.AppCompatActivity;
+
 import github.nisrulz.easydeviceinfo.base.EasyConfigMod;
 
 /**
@@ -18,7 +19,7 @@ public class SDCardInfo extends BaseInfo {
     @Override
     public void init() {
         EasyConfigMod easyConfigMod = new EasyConfigMod(getActivity());
-        setHasSD(easyConfigMod.hasSdCard()?"YES":"NO");
+        setHasSD(easyConfigMod.hasSdCard() ? "YES" : "NO");
     }
 
     @Override
@@ -28,11 +29,11 @@ public class SDCardInfo extends BaseInfo {
         return info.toString();
     }
 
-    public String getHasSD() {
+    private String getHasSD() {
         return hasSD;
     }
 
-    public void setHasSD(String hasSD) {
+    private void setHasSD(String hasSD) {
         this.hasSD = hasSD;
     }
 }
