@@ -10,26 +10,34 @@ public class CollectAllInfo {
 
     public String getAllInfo(AppCompatActivity activity) {
         StringBuilder info = new StringBuilder();
+        info.append("## Device information\n");
         CPUInfo cpuInfo = new CPUInfo(activity);
-        info.append(cpuInfo.getInfo()).append("<br/>");
+        //info.append(cpuInfo.getInfo()).append("<br/>");
+        info.append("\n\t").append(cpuInfo.getInfo());
 
         NFCInfo nfcInfo = new NFCInfo(activity);
-        info.append(nfcInfo.getInfo()).append("<br/>");
+        //info.append(nfcInfo.getInfo()).append("<br/>");
+        info.append("\n\t").append(nfcInfo.getInfo());
 
         SDCardInfo sdCardInfo = new SDCardInfo(activity);
-        info.append(sdCardInfo.getInfo()).append("<br/>");
+        //info.append(sdCardInfo.getInfo()).append("<br/>");
+        info.append("\n\t").append(sdCardInfo.getInfo());
 
         DeviceInfo deviceInfo = new DeviceInfo(activity);
-        info.append(deviceInfo.getInfo()).append("<br/>");
+        //info.append(deviceInfo.getInfo()).append("<br/>");
+        info.append("\n\t").append(deviceInfo.getInfo());
 
         MemoryInfo memoryInfo = new MemoryInfo(activity);
-        info.append(memoryInfo.getInfo()).append("<br/>");
+        //info.append(memoryInfo.getInfo()).append("<br/>");
+        info.append("\n\t").append(memoryInfo.getInfo());
 
         BatteryInfo batteryInfo = new BatteryInfo(activity);
-        info.append(batteryInfo.getInfo()).append("<br/>");
+        //info.append(batteryInfo.getInfo()).append("<br/>");
+        info.append("\n\t").append(batteryInfo.getInfo());
 
         DisplayInfo displayInfo = new DisplayInfo(activity);
-        info.append(displayInfo.getInfo()).append("<br/>");
+        //info.append(displayInfo.getInfo()).append("<br/>");
+        info.append("\n\t").append(displayInfo.getInfo());
 
         return info.toString();
     }

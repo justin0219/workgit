@@ -19,6 +19,8 @@ public class DeviceInfo extends BaseInfo {
     private String bootloader;
     private String fingerprint;
 
+    private static String MTAB = "\n";
+
     DeviceInfo(AppCompatActivity activity) {
         super(activity);
     }
@@ -40,14 +42,14 @@ public class DeviceInfo extends BaseInfo {
     public String getInfo() {
         StringBuilder info = new StringBuilder();
 
-        info.append("Board: ").append(getBoard()).append("<br/>");
-        info.append("ScreenDisplayID: ").append(getScreenDisplayID()).append("<br/>");
-        info.append("Bootloader: ").append(getBootloader()).append("<br/>");
-        info.append("Device: ").append(getDevice()).append("<br/>");
-        info.append("Fingerprint: ").append(getFingerprint()).append("<br/>");
-        info.append("Hardware: ").append(getHardware()).append("<br/>");
-        info.append("Product: ").append(getProduct()).append("<br/>");
-        info.append("RadioVer: ").append(getRadioVer()).append("<br/>");
+        info.append("Board: ").append(getBoard()).append(MTAB);
+        info.append("ScreenDisplayID: ").append(getScreenDisplayID()).append(MTAB);
+        info.append("Bootloader: ").append(getBootloader()).append(MTAB);
+        info.append("Device: ").append(getDevice()).append(MTAB);
+        info.append("Fingerprint: ").append(getFingerprint()).append(MTAB);
+        info.append("Hardware: ").append(getHardware()).append(MTAB);
+        info.append("Product: ").append(getProduct()).append(MTAB);
+        info.append("RadioVer: ").append(getRadioVer()).append(MTAB);
         return info.toString();
     }
     // getter and setter

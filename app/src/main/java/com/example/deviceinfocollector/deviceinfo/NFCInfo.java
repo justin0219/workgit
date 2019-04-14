@@ -11,6 +11,7 @@ import github.nisrulz.easydeviceinfo.base.EasyNfcMod;
 public class NFCInfo extends BaseInfo {
 
     private String nfcStatus;
+    private static String MTAB = "\n";
 
     NFCInfo(AppCompatActivity activity) {
         super(activity);
@@ -24,7 +25,7 @@ public class NFCInfo extends BaseInfo {
 
     public String getInfo() {
         StringBuilder info = new StringBuilder();
-        info.append("NFC Status: ").append(getNfcStatus()).append("<br/>");
+        info.append("NFC Status: ").append(getNfcStatus()).append(MTAB);
         return info.toString();
     }
 

@@ -11,6 +11,7 @@ import github.nisrulz.easydeviceinfo.base.EasyCpuMod;
 public class CPUInfo extends BaseInfo {
 
     private String abis;
+    private static String MTAB = "\n";
 
     CPUInfo(AppCompatActivity activity) {
         super(activity);
@@ -26,7 +27,7 @@ public class CPUInfo extends BaseInfo {
     @Override
     public String getInfo() {
         StringBuilder info = new StringBuilder();
-        info.append("CPU: ").append(getAbis()).append("<br/>");
+        info.append("CPU: ").append(getAbis()).append(MTAB);
         return info.toString();
     }
 

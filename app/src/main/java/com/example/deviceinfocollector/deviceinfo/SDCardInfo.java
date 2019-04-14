@@ -11,6 +11,7 @@ import github.nisrulz.easydeviceinfo.base.EasyConfigMod;
 public class SDCardInfo extends BaseInfo {
 
     private String hasSD;
+    private static String MTAB = "\n";
 
     SDCardInfo(AppCompatActivity activity) {
         super(activity);
@@ -25,7 +26,7 @@ public class SDCardInfo extends BaseInfo {
     @Override
     public String getInfo() {
         StringBuilder info = new StringBuilder();
-        info.append("Has SD Card: ").append(getHasSD()).append("<br/>");
+        info.append("Has SD Card: ").append(getHasSD()).append(MTAB);
         return info.toString();
     }
 

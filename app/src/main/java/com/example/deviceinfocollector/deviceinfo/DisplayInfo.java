@@ -15,6 +15,8 @@ public class DisplayInfo extends BaseInfo {
     private String refreshRate;
     private String physicalSize;
 
+    private static String MTAB = "\n";
+
     DisplayInfo(AppCompatActivity activity) {
         super(activity);
     }
@@ -32,10 +34,10 @@ public class DisplayInfo extends BaseInfo {
     @Override
     public String getInfo() {
         StringBuilder info = new StringBuilder();
-        info.append("Density: ").append(getDensity()).append("<br/>");
-        info.append("PhysicalSize: ").append(getPhysicalSize()).append("<br/>");
-        info.append("RefreshRate: ").append(getRefreshRate()).append("<br/>");
-        info.append("Resolution: ").append(getResolution()).append("<br/>");
+        info.append("Density: ").append(getDensity()).append(MTAB);
+        info.append("PhysicalSize: ").append(getPhysicalSize()).append(MTAB);
+        info.append("RefreshRate: ").append(getRefreshRate()).append(MTAB);
+        info.append("Resolution: ").append(getResolution()).append(MTAB);
         return info.toString();
     }
 

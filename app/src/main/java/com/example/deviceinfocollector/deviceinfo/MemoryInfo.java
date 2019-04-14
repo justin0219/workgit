@@ -14,6 +14,7 @@ public class MemoryInfo extends BaseInfo{
     private String totalMemory;
     private String totalInternalMemorySize;
     private String totalExternalMemorySize;
+    private static String MTAB = "\n";
 
     MemoryInfo(AppCompatActivity activity) {
         super(activity);
@@ -32,9 +33,9 @@ public class MemoryInfo extends BaseInfo{
     @Override
     public String getInfo() {
         StringBuilder info = new StringBuilder();
-        info.append("TotalMemory: ").append(getTotalMemory()).append("<br/>");
-        info.append("TotalExternalMemorySize: ").append(getTotalExternalMemorySize()).append("<br/>");
-        info.append("TotalInternalMemorySize: ").append(getTotalInternalMemorySize()).append("<br/>");
+        info.append("TotalMemory: ").append(getTotalMemory()).append(MTAB);
+        info.append("TotalExternalMemorySize: ").append(getTotalExternalMemorySize()).append(MTAB);
+        info.append("TotalInternalMemorySize: ").append(getTotalInternalMemorySize()).append(MTAB);
         return info.toString();
     }
 

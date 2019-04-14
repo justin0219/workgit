@@ -28,6 +28,7 @@ import github.nisrulz.easydeviceinfo.base.EasyDeviceMod;
 public class SystemInfo {
 
     private AppCompatActivity mainActivity;
+    private static String MTAB = "\n";
 
     public SystemInfo(AppCompatActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -35,25 +36,26 @@ public class SystemInfo {
 
     public String getSystemInfo() {
 
-        return getHeight() +
-                "<br/>" + getWidth() +
-                "<br/>" + getAvailMemory() +
-                "<br/>" + getInfo() +
-                "<br/>" + getDriveInfo() +
-                "<br/>" + getSInfo() +
-                "<br/>" + getSystemAPInfo() +
-                "<br/>" + getVersionStringInfo() +
-                "<br/>" + getProductInfo() +
-                "<br/>" + getBoardInfo() +
-                "<br/>" + getUInfo() +
-                "<br/>" + getCpuInfo() +
-                "<br/>" + getSoftPackage() +
-                "<br/>" + getVersionNumber() +
-                "<br/>" + isRoot() +
-                "<br/>" + getBrandInfo() +
-                "<br/>" + getHostInfo() +
-                "<br/>" + getTagInfo() +
-                "<br/>" + getFingerprintInfo();
+        return "## " + "System information" + MTAB + MTAB +
+                getHeight() +
+                MTAB + getWidth() +
+                MTAB + getAvailMemory() +
+                MTAB + getInfo() +
+                MTAB + getDriveInfo() +
+                MTAB+ getSInfo() +
+                MTAB + getSystemAPInfo() +
+                MTAB + getVersionStringInfo() +
+                MTAB + getProductInfo() +
+                MTAB + getBoardInfo() +
+                MTAB + getUInfo() +
+                MTAB + getCpuInfo() +
+                MTAB + getSoftPackage() +
+                MTAB + getVersionNumber() +
+                MTAB + isRoot() +
+                MTAB + getBrandInfo() +
+                MTAB + getHostInfo() +
+                MTAB + getTagInfo() +
+                MTAB + getFingerprintInfo();
 
     }
 

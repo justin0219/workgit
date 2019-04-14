@@ -41,6 +41,17 @@
   <li>Mobile apps</li>
   <li>Offline viewing</li>
 </ul>]]></string>
+    <string name="title_activity_navi">NaviActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Spy all</string>
+    <string name="nav_header_subtitle">Group</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="device_fragment_loading">Loading device information...</string>
+    <string name="system_fragment_loading">Loading system information...</string>
+    <string name="sensor_fragment_loading">Loading sensor information...</string>
+    <string name="apps_fragment_loading">Loading apps information...</string>
 </resources>

@@ -24,6 +24,7 @@ public class BatteryInfo extends BaseInfo {
     BatteryInfo(AppCompatActivity activity) {
         super(activity);
     }
+    private static String MTAB = "\n";
 
 
     @Override
@@ -43,13 +44,13 @@ public class BatteryInfo extends BaseInfo {
     @Override
     public String getInfo() {
         StringBuilder info = new StringBuilder();
-        info.append("BatteryPercentage: ").append(getBatteryPercentage()).append("<br/>");
-        info.append("BatteryTechnology: ").append(getBatteryTechnology()).append("<br/>");
-        info.append("BatteryVoltage: ").append(getBatteryVoltage()).append("<br/>");
-        info.append("IsDeviceCharging: ").append(getIsDeviceCharging()).append("<br/>");
-        info.append("BatteryTemperature: ").append(getBatteryTemperature()).append("<br/>");
-        info.append("IsChargingVia: ").append(getIsChargingVia()).append("<br/>");
-        info.append("BatteryHealth: ").append(getBatteryHealth()).append("<br/>");
+        info.append("BatteryPercentage: ").append(getBatteryPercentage()).append(MTAB);
+        info.append("BatteryTechnology: ").append(getBatteryTechnology()).append(MTAB);
+        info.append("BatteryVoltage: ").append(getBatteryVoltage()).append(MTAB);
+        info.append("IsDeviceCharging: ").append(getIsDeviceCharging()).append(MTAB);
+        info.append("BatteryTemperature: ").append(getBatteryTemperature()).append(MTAB);
+        info.append("IsChargingVia: ").append(getIsChargingVia()).append(MTAB);
+        info.append("BatteryHealth: ").append(getBatteryHealth()).append(MTAB);
         return info.toString();
     }
 
