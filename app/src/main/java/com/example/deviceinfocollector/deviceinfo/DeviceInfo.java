@@ -41,7 +41,6 @@ public class DeviceInfo extends BaseInfo {
     @Override
     public String getInfo() {
         StringBuilder info = new StringBuilder();
-
         info.append("Board: ").append(getBoard()).append(MTAB);
         info.append("ScreenDisplayID: ").append(getScreenDisplayID()).append(MTAB);
         info.append("Bootloader: ").append(getBootloader()).append(MTAB);

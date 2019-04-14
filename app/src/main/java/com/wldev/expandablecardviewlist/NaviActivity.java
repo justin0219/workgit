@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.example.deviceinfocollector.applicationinfo.ApplicationInfo;
 import com.example.deviceinfocollector.deviceinfo.CollectAllInfo;
+import com.example.deviceinfocollector.deviceinfo.DeviceInfo;
 import com.example.deviceinfocollector.sensorinfo.SensorInfo;
 import com.example.deviceinfocollector.systeminfo.SystemInfo;
 import com.wldev.expandablecardviewlist.data.AppsInfo;
@@ -43,6 +44,19 @@ public class NaviActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navi);
+
+        DeviceInfoFragment fragment = new DeviceInfoFragment();
+
+        CollectAllInfo collectAllInfo = new CollectAllInfo();
+        Bundle data = new Bundle();
+        data.putString(ARG_PARAM_DEVICE, collectAllInfo.getAllInfo(NaviActivity.this));
+        fragment = new DeviceInfoFragment();
+
+        if(fragment != null) {
+            fragment.setArguments(data);
+            displaySelectedFragment(fragment);
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

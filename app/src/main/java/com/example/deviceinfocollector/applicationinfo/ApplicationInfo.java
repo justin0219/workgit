@@ -59,7 +59,6 @@ public class ApplicationInfo {
         PackageManager pm = context.getPackageManager();
         List<PackageInfo> installedPackages = pm.getInstalledPackages(PackageManager.GET_UNINSTALLED_PACKAGES);
         ArrayList<AppsInfo> appsInfos = new ArrayList<AppsInfo>();
-
         for (PackageInfo packageInfo : installedPackages) {
             String appName = packageInfo.applicationInfo.loadLabel(context.getPackageManager()).toString();
             String packageName = packageInfo.packageName;

@@ -87,6 +87,7 @@ public class AppInfoFragment extends ListFragment{
         super.onViewCreated(view, savedInstanceState);
         mParamAppsinfo = (ArrayList<AppsInfo>)getArguments().getSerializable(ARG_PARAM_APPSINFO);
         Log.w("fragment", "view apps fragment");
+        mParamAppsinfo.add(new AppsInfo("package", "app name"));
         adapter.refresh(mParamAppsinfo);
     }
 

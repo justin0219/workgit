@@ -5,13 +5,21 @@
     android:layout_height="match_parent"
     tools:context=".fragments.DeviceInfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/text_deviceinfo"
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="18sp"
-        android:scrollbars="vertical"
-        android:text="@string/device_fragment_loading" />
+        android:orientation="vertical">    <!-- TODO: Update blank fragment layout -->
+        <TextView
+            android:id="@+id/text_deviceinfo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:typeface="monospace"
+            android:textSize="20sp"
+            android:scrollbars="vertical"
+            android:text="@string/device_fragment_loading" />
+    </LinearLayout>
 
 </FrameLayout>

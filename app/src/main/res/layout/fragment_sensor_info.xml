@@ -12,6 +12,8 @@
         android:layout_height="match_parent"
         android:textSize="18sp"
         android:scrollbars="vertical"
+        android:gravity="center"
+        android:typeface="monospace"
         android:text="@string/sensor_fragment_loading" />
 
 </FrameLayout>
