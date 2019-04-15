@@ -63,13 +63,12 @@ public class AppsInfoAdapter extends ArrayAdapter<AppsInfo>{
         View view;
 
         if(convertView == null)
-            view = mInflater.inflate(R.layout.item_appsinfo, parent, false);
+            view = mInflater.inflate(R.layout.itemcard_appsinfo, parent, false);
         else
             view = convertView;
         AppsInfo appinfo = this.appsInfos.get(getCount() - position - 1);
-        Log.w("adapter", "get view");
-        ((CheckedTextView)view.findViewById(R.id.item_apps_pkg)).setText(appinfo.getPackageName());
-        ((CheckedTextView)view.findViewById(R.id.item_apps_name)).setText(appinfo.getAppName());
+        ((TextView)view.findViewById(R.id.item_apps_pkg)).setText(appinfo.getPackageName());
+        ((TextView)view.findViewById(R.id.item_apps_name)).setText(appinfo.getAppName());
         return view;
     }
 
