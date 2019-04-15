@@ -144,7 +144,7 @@ public class NaviActivity extends AppCompatActivity
                     }
                 }
             }
-        }, 0, 3000);
+        }, 0, 500);
 
         // set toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
