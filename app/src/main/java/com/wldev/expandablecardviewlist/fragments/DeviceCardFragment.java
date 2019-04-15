@@ -3,6 +3,8 @@ package com.wldev.expandablecardviewlist.fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +13,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.HttpAuthHandler;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
@@ -22,7 +25,10 @@ import com.wldev.expandablecardviewlist.data.SensorData;
 import com.yydcdut.markdown.syntax.text.TextFactory;
 import com.yydcdut.rxmarkdown.RxMarkdown;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -44,6 +50,11 @@ public class DeviceCardFragment extends ListFragment {
     // TODO: Rename and change types of parameters
     private ArrayList<DeviceData> mParamDevice;
     private DeviceInfoAdapter adapter;
+
+    public DeviceInfoAdapter getAdapter() {
+        return adapter;
+    }
+
     public DeviceCardFragment() {
         // Required empty public constructor
     }
@@ -69,11 +80,24 @@ public class DeviceCardFragment extends ListFragment {
         DeviceData deviceData = new DeviceData("label", "value");
         ArrayList<DeviceData> deviceDatas = new ArrayList<DeviceData>();
         deviceDatas.add(deviceData);
+        // set adapter
         adapter = new DeviceInfoAdapter(deviceDatas, getActivity(), R.layout.fragment_device_card);
         setListAdapter(adapter);
         if (getArguments() != null) {
             mParamDevice = (ArrayList<DeviceData>) getArguments().getSerializable(ARG_PARAM_DEVICE);
         }
+
+        /**
+        final Handler refreshHandler = new Handler();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                // do updates for imageview
+                refreshHandler.postDelayed(this, 1 * 1000);
+            }
+        };
+        refreshHandler.postDelayed(runnable, 1 * 1000);
+         **/
     }
 
     @Override
@@ -81,8 +105,6 @@ public class DeviceCardFragment extends ListFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_device_card, container, false);
-        //final TextView mtextview = (TextView) view.findViewById(R.id.text_deviceinfo);
-        //mtextview.setMovementMethod(ScrollingMovementMethod.getInstance());
         return view;
     }
 
@@ -90,8 +112,6 @@ public class DeviceCardFragment extends ListFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mParamDevice = (ArrayList<DeviceData>) getArguments().getSerializable(ARG_PARAM_DEVICE);
-        final TextView mtv_label = (TextView) view.findViewById(R.id.tv_device_label);
-        final TextView mtv_value = (TextView) view.findViewById(R.id.tv_device_value);
         adapter.refresh(mParamDevice);
     }
 }

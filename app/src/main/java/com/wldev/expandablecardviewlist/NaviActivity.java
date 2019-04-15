@@ -1,6 +1,8 @@
 package com.wldev.expandablecardviewlist;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -29,6 +31,8 @@ import com.wldev.expandablecardviewlist.fragments.SensorCardFragment;
 import com.wldev.expandablecardviewlist.fragments.SystemInfoFragment;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class NaviActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,22 +44,109 @@ public class NaviActivity extends AppCompatActivity
 
     private ArrayList<DeviceData> deviceDatas;
 
+    public DeviceCardFragment getDeviceCardFragment() {
+        return deviceCardFragment;
+    }
+
+    DeviceCardFragment deviceCardFragment;
+    boolean isDeviceFragment;
+    private Handler mHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navi);
 
-        DeviceCardFragment fragment = new DeviceCardFragment();
+        // set device fragment
+        this.deviceCardFragment = new DeviceCardFragment();
         CollectAllInfo collectAllInfo = new CollectAllInfo(NaviActivity.this);
         this.deviceDatas = collectAllInfo.getDeviceDatas();
         Bundle data = new Bundle();
         data.putSerializable(ARG_PARAM_DEVICE, this.deviceDatas);
-        fragment = new DeviceCardFragment();
-        if(fragment != null) {
-            fragment.setArguments(data);
-            displaySelectedFragment(fragment);
+        this.deviceCardFragment = new DeviceCardFragment();
+        if(this.deviceCardFragment != null) {
+            this.deviceCardFragment.setArguments(data);
+            displaySelectedFragment(this.deviceCardFragment);
+            isDeviceFragment = true;
         }
 
+
+        mHandler = new Handler() {
+
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                ArrayList<DeviceData> mdeviceDatas = (ArrayList<DeviceData>)msg.obj;
+                deviceCardFragment.getAdapter().refresh(mdeviceDatas);
+            }
+        };
+        /**
+        Thread thread = new Thread(){
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (true)
+                        {
+
+                            if(isDeviceFragment) {
+                                DeviceCardFragment mdevFragment = deviceCardFragment;
+                                if (mdevFragment != null) {
+                                    CollectAllInfo collectAllInfo = new CollectAllInfo(NaviActivity.this);
+                                    ArrayList<DeviceData> mdeviceDatas = collectAllInfo.getDeviceDatas();
+                                    //Bundle data = new Bundle();
+                                    //data.putSerializable(ARG_PARAM_DEVICE, mdeviceDatas);
+                                    //mdevFragment.setArguments(data);
+                                    Message message = new Message();
+                                    message.obj = mdeviceDatas;
+                                    //mHandler.sendMessage(message);
+                                    //displaySelectedFragment(mdevFragment);
+                                }
+                                Log.w("Navi Acivity", "update view");
+                            }
+                            try {
+                                Thread.sleep(3000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }
+                });
+            }
+        };
+        thread.start();
+        **/
+
+        // timer update
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask(){
+            @Override
+            public void run(){
+                while (true)
+                {
+                    if(isDeviceFragment) {
+                        DeviceCardFragment mdevFragment = deviceCardFragment;
+                        if (mdevFragment != null) {
+                            CollectAllInfo collectAllInfo = new CollectAllInfo(NaviActivity.this);
+                            ArrayList<DeviceData> mdeviceDatas = collectAllInfo.getDeviceDatas();
+                            //Bundle data = new Bundle();
+                            //data.putSerializable(ARG_PARAM_DEVICE, mdeviceDatas);
+                            //mdevFragment.setArguments(data);
+                            Message message = new Message();
+                            message.obj = mdeviceDatas;
+                            mHandler.sendMessage(message);
+                            //displaySelectedFragment(mdevFragment);
+                        }
+                        Log.w("Navi Acivity", "update view");
+                    }
+                }
+            }
+        }, 0, 3000);
+
+        // set toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -123,15 +214,21 @@ public class NaviActivity extends AppCompatActivity
             // put arguments
             Bundle data = new Bundle();
             data.putSerializable(ARG_PARAM_DEVICE, this.deviceDatas);
-            fragment = new DeviceCardFragment();
+            if(this.deviceCardFragment == null) {
+                Log.d("Navigation", "create DeviceCardFragment");
+                this.deviceCardFragment = new DeviceCardFragment();
+            }
+            fragment = this.deviceCardFragment;
             fragment.setArguments(data);
             Log.w("navigate", "start fragment device");
+            this.isDeviceFragment = true;
         } else if (id == R.id.nav_system) {
             SystemInfo systemInfo = new SystemInfo(NaviActivity.this);
             Bundle data = new Bundle();
             data.putString(ARG_PARAM_SYSINFO, systemInfo.getSystemInfo());
             fragment = new SystemInfoFragment();
             fragment.setArguments(data);
+            this.isDeviceFragment = false;
         } else if (id == R.id.nav_sensor) {
             SensorInfo sensorInfo = new SensorInfo(NaviActivity.this);
             Bundle data = new Bundle();
@@ -140,15 +237,19 @@ public class NaviActivity extends AppCompatActivity
             data.putSerializable(ARG_PARAM_SENSORINFO, sensorData);
             fragment = new SensorCardFragment();
             fragment.setArguments(data);
+            this.isDeviceFragment = false;
         } else if (id == R.id.nav_app) {
             ApplicationInfo applicationInfo = new ApplicationInfo(this);
             ArrayList<AppData> appData = applicationInfo.getListAppInfo();
             Bundle data = new Bundle();
             data.putSerializable(ARG_PARAM_APPSINFO, appData);
             fragment = new AppInfoFragment();
-           fragment.setArguments(data);
-        } else if (id == R.id.nav_share) {
-        } else if (id == R.id.nav_send) {
+            fragment.setArguments(data);
+            this.isDeviceFragment = false;
+        }
+        else
+        {
+            this.isDeviceFragment = false;
         }
         if(fragment!=null)
         {
