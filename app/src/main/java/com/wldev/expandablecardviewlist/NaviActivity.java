@@ -21,11 +21,11 @@ import com.example.deviceinfocollector.deviceinfo.CollectAllInfo;
 import com.example.deviceinfocollector.sensorinfo.SensorInfo;
 import com.example.deviceinfocollector.systeminfo.SystemInfo;
 import com.wldev.expandablecardviewlist.data.AppData;
+import com.wldev.expandablecardviewlist.data.DeviceData;
 import com.wldev.expandablecardviewlist.data.SensorData;
 import com.wldev.expandablecardviewlist.fragments.AppInfoFragment;
-import com.wldev.expandablecardviewlist.fragments.DeviceInfoFragment;
+import com.wldev.expandablecardviewlist.fragments.DeviceCardFragment;
 import com.wldev.expandablecardviewlist.fragments.SensorCardFragment;
-import com.wldev.expandablecardviewlist.fragments.SensorInfoFragment;
 import com.wldev.expandablecardviewlist.fragments.SystemInfoFragment;
 
 import java.util.ArrayList;
@@ -38,18 +38,19 @@ public class NaviActivity extends AppCompatActivity
     private static final String ARG_PARAM_SENSORINFO = "param_sensorinfo";
     private static final String ARG_PARAM_APPSINFO = "param_appsinfo";
 
+    private ArrayList<DeviceData> deviceDatas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navi);
 
-        DeviceInfoFragment fragment = new DeviceInfoFragment();
-
-        CollectAllInfo collectAllInfo = new CollectAllInfo();
+        DeviceCardFragment fragment = new DeviceCardFragment();
+        CollectAllInfo collectAllInfo = new CollectAllInfo(NaviActivity.this);
+        this.deviceDatas = collectAllInfo.getDeviceDatas();
         Bundle data = new Bundle();
-        data.putString(ARG_PARAM_DEVICE, collectAllInfo.getAllInfo(NaviActivity.this));
-        fragment = new DeviceInfoFragment();
-
+        data.putSerializable(ARG_PARAM_DEVICE, this.deviceDatas);
+        fragment = new DeviceCardFragment();
         if(fragment != null) {
             fragment.setArguments(data);
             displaySelectedFragment(fragment);
@@ -116,10 +117,13 @@ public class NaviActivity extends AppCompatActivity
         int id = item.getItemId();
         Fragment fragment = null;
         if (id == R.id.nav_device) {
-            CollectAllInfo collectAllInfo = new CollectAllInfo();
+            // get data
+            CollectAllInfo collectAllInfo = new CollectAllInfo(NaviActivity.this);
+            this.deviceDatas = collectAllInfo.getDeviceDatas();
+            // put arguments
             Bundle data = new Bundle();
-            data.putString(ARG_PARAM_DEVICE, collectAllInfo.getAllInfo(NaviActivity.this));
-            fragment = new DeviceInfoFragment();
+            data.putSerializable(ARG_PARAM_DEVICE, this.deviceDatas);
+            fragment = new DeviceCardFragment();
             fragment.setArguments(data);
             Log.w("navigate", "start fragment device");
         } else if (id == R.id.nav_system) {

@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         //arrayList.add(new Item("位置信息", getString(R.string.full_plan)));
 
         // 系统硬件获取测试
-        CollectAllInfo collectAllInfo = new CollectAllInfo();
-        arrayList.add(new Item("硬件信息", collectAllInfo.getAllInfo(MainActivity.this)));
+        //CollectAllInfo collectAllInfo = new CollectAllInfo(this);
+        //arrayList.add(new Item("硬件信息", collectAllInfo.getAllInfo(MainActivity.this)));
 
         // 获取系统信息测试
         SystemInfo systemInfo = new SystemInfo(MainActivity.this);

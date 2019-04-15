@@ -56,10 +56,10 @@ public class SensorCardFragment extends ListFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SensorData appinfo = new SensorData("name", "factory", "detail");
-        ArrayList<SensorData> sensorData = new ArrayList<SensorData>();
-        sensorData.add(appinfo);
-        adapter = new SensorInfoAdapter(sensorData, getActivity(), R.layout.fragment_sensor_card);
+        SensorData msensorData = new SensorData("name", "factory", "detail");
+        ArrayList<SensorData> sensorDatas = new ArrayList<SensorData>();
+        sensorDatas.add(msensorData);
+        adapter = new SensorInfoAdapter(sensorDatas, getActivity(), R.layout.fragment_sensor_card);
         setListAdapter(adapter);
         if (getArguments() != null) {
             mParamSensorsinfo = (ArrayList<SensorData>)getArguments().getSerializable(ARG_PARAM_SENSORINFO);
