@@ -5,7 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.util.Log;
 
-import com.wldev.expandablecardviewlist.data.AppsInfo;
+import com.wldev.expandablecardviewlist.data.AppData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,17 +53,17 @@ public class ApplicationInfo {
         return map_info;
     }
 
-    public ArrayList<AppsInfo> getListAppInfo()
+    public ArrayList<AppData> getListAppInfo()
     {
         StringBuilder result = new StringBuilder();
         PackageManager pm = context.getPackageManager();
         List<PackageInfo> installedPackages = pm.getInstalledPackages(PackageManager.GET_UNINSTALLED_PACKAGES);
-        ArrayList<AppsInfo> appsInfos = new ArrayList<AppsInfo>();
+        ArrayList<AppData> appData = new ArrayList<AppData>();
         for (PackageInfo packageInfo : installedPackages) {
             String appName = packageInfo.applicationInfo.loadLabel(context.getPackageManager()).toString();
             String packageName = packageInfo.packageName;
-            appsInfos.add(new AppsInfo(packageName, appName));
+            appData.add(new AppData(packageName, appName));
         }
-        return appsInfos;
+        return appData;
     }
 }

@@ -1,7 +1,7 @@
 package com.wldev.expandablecardviewlist.data;
 
-public class AppsInfo {
-    public AppsInfo(String packageName, String appName) {
+public class AppData {
+    public AppData(String packageName, String appName) {
         this.packageName = packageName;
         this.appName = appName;
     }

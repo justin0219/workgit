@@ -10,40 +10,39 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.wldev.expandablecardviewlist.R;
-import com.wldev.expandablecardviewlist.data.AppData;
+import com.wldev.expandablecardviewlist.data.SensorData;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AppsInfoAdapter extends ArrayAdapter<AppData>{
+public class SensorInfoAdapter extends ArrayAdapter<SensorData> {
     private final LayoutInflater mInflater;
-    private ArrayList<AppData> appData;
-    public AppsInfoAdapter(ArrayList<AppData> appData, @NonNull Context context, int resource) {
+    private ArrayList<SensorData> sensorData;
+    public SensorInfoAdapter(ArrayList<SensorData> sensorData, @NonNull Context context, int resource) {
         super(context, resource);
-        this.appData = appData;
+        this.sensorData = sensorData;
         mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public void setData(List<AppData> data)
+    public void setData(List<SensorData> data)
     {
         clear();
         if(data!=null)
         {
-            for(AppData appData :data)
-                add(appData);
+            for(SensorData sensorData :data)
+                add(sensorData);
         }
     }
 
 
-
     @Override
     public int getCount() {
-        return this.appData.size();
+        return this.sensorData.size();
     }
 
     @Override
-    public AppData getItem(int position) {
-        return this.appData.get(position);
+    public SensorData getItem(int position) {
+        return this.sensorData.get(position);
     }
 
     @Override
@@ -57,18 +56,19 @@ public class AppsInfoAdapter extends ArrayAdapter<AppData>{
         View view;
 
         if(convertView == null)
-            view = mInflater.inflate(R.layout.itemcard_appinfo, parent, false);
+            view = mInflater.inflate(R.layout.itemcard_sensorinfo, parent, false);
         else
             view = convertView;
-        AppData appinfo = this.appData.get(getCount() - position - 1);
-        ((TextView)view.findViewById(R.id.item_apps_pkg)).setText(appinfo.getPackageName());
-        ((TextView)view.findViewById(R.id.item_apps_name)).setText(appinfo.getAppName());
+        SensorData sensorData = this.sensorData.get(getCount() - position - 1);
+        ((TextView)view.findViewById(R.id.sensor_name)).setText(sensorData.getSensorName());
+        ((TextView)view.findViewById(R.id.sensor_factory)).setText(sensorData.getSensorFactory());
+        ((TextView)view.findViewById(R.id.sensor_detail)).setText(sensorData.getSensorDetail());
         return view;
     }
 
-    public void refresh(ArrayList<AppData> appData)
+    public void refresh(ArrayList<SensorData> sensorData)
     {
-        this.appData = appData;
+        this.sensorData = sensorData;
         notifyDataSetChanged();
     }
 }

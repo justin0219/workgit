@@ -18,19 +18,17 @@ import android.view.MenuItem;
 
 import com.example.deviceinfocollector.applicationinfo.ApplicationInfo;
 import com.example.deviceinfocollector.deviceinfo.CollectAllInfo;
-import com.example.deviceinfocollector.deviceinfo.DeviceInfo;
 import com.example.deviceinfocollector.sensorinfo.SensorInfo;
 import com.example.deviceinfocollector.systeminfo.SystemInfo;
-import com.wldev.expandablecardviewlist.data.AppsInfo;
-import com.wldev.expandablecardviewlist.data.Item;
+import com.wldev.expandablecardviewlist.data.AppData;
+import com.wldev.expandablecardviewlist.data.SensorData;
 import com.wldev.expandablecardviewlist.fragments.AppInfoFragment;
 import com.wldev.expandablecardviewlist.fragments.DeviceInfoFragment;
+import com.wldev.expandablecardviewlist.fragments.SensorCardFragment;
 import com.wldev.expandablecardviewlist.fragments.SensorInfoFragment;
 import com.wldev.expandablecardviewlist.fragments.SystemInfoFragment;
-import com.yydcdut.markdown.MarkdownProcessor;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class NaviActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -133,14 +131,16 @@ public class NaviActivity extends AppCompatActivity
         } else if (id == R.id.nav_sensor) {
             SensorInfo sensorInfo = new SensorInfo(NaviActivity.this);
             Bundle data = new Bundle();
-            data.putString(ARG_PARAM_SENSORINFO, sensorInfo.getInfo());
-            fragment = new SensorInfoFragment();
+            //data.putString(ARG_PARAM_SENSORINFO, sensorInfo.getInfo());
+            ArrayList<SensorData> sensorData = sensorInfo.getSensorsInfo();
+            data.putSerializable(ARG_PARAM_SENSORINFO, sensorData);
+            fragment = new SensorCardFragment();
             fragment.setArguments(data);
         } else if (id == R.id.nav_app) {
             ApplicationInfo applicationInfo = new ApplicationInfo(this);
-            ArrayList<AppsInfo> appinfos = applicationInfo.getListAppInfo();
+            ArrayList<AppData> appData = applicationInfo.getListAppInfo();
             Bundle data = new Bundle();
-            data.putSerializable(ARG_PARAM_APPSINFO, appinfos);
+            data.putSerializable(ARG_PARAM_APPSINFO, appData);
             fragment = new AppInfoFragment();
            fragment.setArguments(data);
         } else if (id == R.id.nav_share) {
