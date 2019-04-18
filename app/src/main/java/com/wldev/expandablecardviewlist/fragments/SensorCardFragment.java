@@ -29,10 +29,14 @@ public class SensorCardFragment extends ListFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM_SENSORINFO = "param_sensorinfo";
+
+    public SensorInfoAdapter getAdapter() {
+        return adapter;
+    }
+
     SensorInfoAdapter adapter;
 
     private ArrayList<SensorData> mParamSensorsinfo;
-
 
     public SensorCardFragment() {
         // Required empty public constructor
@@ -42,7 +46,7 @@ public class SensorCardFragment extends ListFragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment AppInfoFragment.
+     * @return A new instance of fragment AppCardFragment.
      */
     // TODO: Rename and change types and number of parameters
     public static SensorCardFragment newInstance(String mParamSensorsinfo) {

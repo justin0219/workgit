@@ -6,10 +6,13 @@ import android.os.StatFs;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.Formatter;
 
+import com.wldev.expandablecardviewlist.data.SystemData;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import github.nisrulz.easydeviceinfo.base.EasyDeviceMod;
 
@@ -34,15 +37,14 @@ public class SystemInfo {
         this.mainActivity = mainActivity;
     }
 
-    public String getSystemInfo() {
-
+    private String getSystemInfo() {
         return "## " + "System information" + MTAB + MTAB +
                 getHeight() +
                 MTAB + getWidth() +
                 MTAB + getAvailMemory() +
-                MTAB + getInfo() +
+                MTAB + getPhoneInfo() +
                 MTAB + getDriveInfo() +
-                MTAB+ getSInfo() +
+                MTAB+ getModelInfo() +
                 MTAB + getSystemAPInfo() +
                 MTAB + getVersionStringInfo() +
                 MTAB + getProductInfo() +
@@ -87,19 +89,22 @@ public class SystemInfo {
     private String getProductInfo() {
         EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
         String OSCodeName = easyDeviceMod.getProduct();
-        return "Product 名称: " + OSCodeName;
+        //return "Product 名称: " + OSCodeName;
+        return OSCodeName;
     }
 
     private String getBoardInfo() {
         EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
         String SBoard = easyDeviceMod.getBoard();
-        return "Board 信息: " + SBoard;
+        // "Board 信息: " +
+        return SBoard;
     }
 
     private String getFingerprintInfo() {
         EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
         String Finger = easyDeviceMod.getFingerprint();
-        return "指纹信息: " + Finger;
+        // "指纹信息: " +
+        return Finger;
     }
 
     /**
@@ -108,37 +113,43 @@ public class SystemInfo {
     private String getBrandInfo() {
         EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
         String Brand = easyDeviceMod.getBuildBrand();
-        return "Brand 信息: " + Brand;
+        // "Brand 信息: " +
+        return Brand;
     }
 
     private String getHostInfo() {
         EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
         String Host = easyDeviceMod.getBuildHost();
-        return "Host 信息: " + Host;
+        // "Host 信息: " +
+        return Host;
     }
 
     private String getTagInfo() {
         EasyDeviceMod easyDeviceMod = new EasyDeviceMod(this.mainActivity);
         String Tag = easyDeviceMod.getBuildTags();
-        return "Tag 信息: " + Tag;
+        // "Tag 信息: " +
+        return Tag;
     }
 
 
     /**
      * 获取手机是否root信息
      */
-    private String isRoot() {
+    private boolean isRoot() {
 
-        String bool = "Root: 未 Root";
+        // String bool = "Root: 未 Root";
+        boolean disRooted = false;
         try {
             if ((!new File("/system/bin/su").exists()) && (!new File("/system/xbin/su").exists())) {
-                bool = "Root: 未 Root";
+                //bool = "Root: 未 Root";
+                disRooted = false;
             } else {
-                bool = "Root: 已 Root";
+                //bool = "Root: 已 Root";
+                disRooted = true;
             }
         } catch (Exception ignored) {
         }
-        return bool;
+        return disRooted;
     }
 
 
@@ -150,7 +161,8 @@ public class SystemInfo {
         StatFs stat = new StatFs(path.getPath());
         long blockSize = stat.getBlockSize();
         long availableBlocks = stat.getAvailableBlocks();
-        return "当前可用内存: " + Formatter.formatFileSize(this.mainActivity, blockSize * availableBlocks);
+        // "当前可用内存: " +
+        return Formatter.formatFileSize(this.mainActivity, blockSize * availableBlocks);
     }
 
 
@@ -173,34 +185,39 @@ public class SystemInfo {
             localBufferedReader.close();
         } catch (IOException ignored) {
         }
-        return "总内存大小: " + Formatter.formatFileSize(this.mainActivity.getBaseContext(), initial_memory);// Byte转换为KB或者MB，内存大小规格化
+        // "总内存大小: " +
+        return Formatter.formatFileSize(this.mainActivity.getBaseContext(), initial_memory);// Byte转换为KB或者MB，内存大小规格化
     }
 
     /**
      * 获得手机屏幕宽高
      */
-    public String getHeight() {
+    private String getHeight() {
         int heigth = this.mainActivity.getWindowManager().getDefaultDisplay().getHeight();
-        return "屏幕高度: " + heigth + "";
+        // "屏幕高度: " +
+        return heigth + "";
     }
 
-    public String getWidth() {
+    private String getWidth() {
         int width = this.mainActivity.getWindowManager().getDefaultDisplay().getWidth();
-        return "屏幕宽度: " + width + "";
+        // "屏幕宽度: "
+        return + width + "";
     }
 
 
     /**
      * 获取手机型号
      */
-    private String getInfo() {
+    private String getPhoneInfo() {
         String mtyb = android.os.Build.BRAND;//手机品牌
-        return "手机品牌: " + mtyb;
+        // "手机品牌: " +
+        return mtyb;
     }
 
     private String getDriveInfo() {
         String mdrive = android.os.Build.DEVICE;//设备驱动
-        return "设备驱动: " + mdrive;
+        // "设备驱动: " +
+        return mdrive;
     }
 
 
@@ -209,25 +226,29 @@ public class SystemInfo {
      */
     private String getUInfo() {
         String muser = android.os.Build.USER; //设备用户名
-        return "系统用户名: " + muser;
+        // "系统用户名: " +
+        return muser;
     }
 
     /**
      * 获取系统版本
      */
-    private String getSInfo() {
+    private String getModelInfo() {
         String mtype = android.os.Build.MODEL; // 系统型号
-        return "系统型号: " + mtype;
+        // "系统型号: " +
+        return mtype;
     }
 
     private String getVersionStringInfo() {
         String msvs = android.os.Build.VERSION.RELEASE; //系统版本字符串
-        return "系统版本: 安卓 " + msvs;
+        // "系统版本: 安卓 " +
+        return msvs;
     }
 
     private String getSystemAPInfo() {
         String msapi = android.os.Build.VERSION.SDK; //系统API
-        return "系统API版本: " + msapi;
+        // "系统API版本: " +
+        return msapi;
     }
 
     private String getCpuInfo() {
@@ -249,6 +270,54 @@ public class SystemInfo {
             localBufferedReader.close();
         } catch (IOException ignored) {
         }
-        return "CPU频率: " + cpuInfo[1];
+        // "CPU频率: " +
+        return cpuInfo[1];
+    }
+
+    public ArrayList<SystemData> getSystemDatas()
+    {
+        /**
+         *
+         return "## " + "System information" + MTAB + MTAB +
+         getHeight() +
+         MTAB + getWidth() +
+         MTAB + getAvailMemory() +
+         MTAB + getPhoneInfo() +
+         MTAB + getDriveInfo() +
+         MTAB+ getSInfo() +
+         MTAB + getSystemAPInfo() +
+         MTAB + getVersionStringInfo() +
+         MTAB + getProductInfo() +
+         MTAB + getBoardInfo() +
+         MTAB + getUInfo() +
+         MTAB + getCpuInfo() +
+         MTAB + getSoftPackage() +
+         MTAB + getVersionNumber() +
+         MTAB + isRoot() +
+         MTAB + getBrandInfo() +
+         MTAB + getHostInfo() +
+         MTAB + getTagInfo() +
+         MTAB + getFingerprintInfo();
+         */
+        ArrayList<SystemData> systemDatas = new ArrayList<>();
+        systemDatas.add(new SystemData("size(hight X width)", getHeight() + " X " + getWidth()));
+        systemDatas.add(new SystemData("avail memory", getAvailMemory()));
+        systemDatas.add(new SystemData("phone info", getPhoneInfo()));
+        systemDatas.add(new SystemData("driver", getDriveInfo()));
+        systemDatas.add(new SystemData("model", getModelInfo()));
+        systemDatas.add(new SystemData("api version", getSystemAPInfo()));
+        systemDatas.add(new SystemData("release number", getVersionStringInfo()));
+        systemDatas.add(new SystemData("product", getProductInfo()));
+        systemDatas.add(new SystemData("board", getBoardInfo()));
+        systemDatas.add(new SystemData("ui", getUInfo()));
+        systemDatas.add(new SystemData("cpu", getCpuInfo()));
+        systemDatas.add(new SystemData("package", getSoftPackage()));
+        systemDatas.add(new SystemData("version number", getVersionNumber()));
+        systemDatas.add(new SystemData("is rooted", Boolean.toString(isRoot())));
+        systemDatas.add(new SystemData("brand info", getBrandInfo()));
+        systemDatas.add(new SystemData("host", getHostInfo()));
+        systemDatas.add(new SystemData("tag", getTagInfo()));
+        systemDatas.add(new SystemData("fingerprint", getFingerprintInfo()));
+        return systemDatas;
     }
 }

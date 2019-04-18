@@ -17,19 +17,24 @@ import com.wldev.expandablecardviewlist.data.AppData;
 import java.util.ArrayList;
 
 /**
- * Use the {@link AppInfoFragment#newInstance} factory method to
+ * Use the {@link AppCardFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AppInfoFragment extends ListFragment{
+public class AppCardFragment extends ListFragment{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM_APPSINFO = "param_appsinfo";
+
+    public AppsInfoAdapter getAdapter() {
+        return adapter;
+    }
+
     AppsInfoAdapter adapter;
 
     private ArrayList<AppData> mParamAppsinfo;
 
 
-    public AppInfoFragment() {
+    public AppCardFragment() {
         // Required empty public constructor
     }
 
@@ -37,11 +42,11 @@ public class AppInfoFragment extends ListFragment{
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment AppInfoFragment.
+     * @return A new instance of fragment AppCardFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AppInfoFragment newInstance(String mParamAppsinfo) {
-        AppInfoFragment fragment = new AppInfoFragment();
+    public static AppCardFragment newInstance(String mParamAppsinfo) {
+        AppCardFragment fragment = new AppCardFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM_APPSINFO, mParamAppsinfo);
         fragment.setArguments(args);
@@ -73,7 +78,7 @@ public class AppInfoFragment extends ListFragment{
         super.onViewCreated(view, savedInstanceState);
         mParamAppsinfo = (ArrayList<AppData>)getArguments().getSerializable(ARG_PARAM_APPSINFO);
         Log.w("fragment", "view apps fragment");
-        mParamAppsinfo.add(new AppData("package", "app name"));
+        //mParamAppsinfo.add(new AppData("package", "app name"));
         adapter.refresh(mParamAppsinfo);
     }
 

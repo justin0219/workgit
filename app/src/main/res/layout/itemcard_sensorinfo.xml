@@ -22,21 +22,17 @@
             android:id="@+id/avatar_image"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginTop="12dp"
             android:padding="4dp"
             android:scaleType="centerCrop"
             app:srcCompat="@mipmap/iconfinder_hacker"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/media_image"
-            app:layout_constraintVertical_chainStyle="packed" />
+            tools:layout_editor_absoluteY="12dp" />
 
         <TextView
             android:id="@+id/sensor_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="233"
+            android:text="name"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/colorPrimaryTextDefaultMaterialLight"
             app:layout_constraintTop_toTopOf="@+id/avatar_image"
@@ -48,46 +44,34 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="233"
+            android:layout_marginTop="10dp"
+            android:text="factory"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2"
             android:textColor="@color/colorSecondaryTextDefaultMaterialLight"
+            app:layout_constraintBottom_toBottomOf="@+id/avatar_image"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/avatar_image"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/avatar_image" />
-
-        <ImageView
-            android:id="@+id/media_image"
-            android:src="@mipmap/image_sensor_simple"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="12dp"
-            android:scaleType="centerCrop"
-            app:srcCompat="@android:color/darker_gray"
-            app:layout_constraintDimensionRatio="H,16:9"
-            app:layout_constraintTop_toBottomOf="@+id/avatar_image"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/sensor_detail"/>
+            app:layout_constraintTop_toBottomOf="@+id/sensor_name" />
 
         <TextView
             android:id="@+id/sensor_detail"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:lineSpacingExtra="8dp"
             android:text="details"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/colorPrimaryTextDefaultMaterialLight"
-            app:layout_constraintTop_toBottomOf="@+id/media_image"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/abtn_app"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/action_button_1"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sensor_factory" />
 
         <Button
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:id="@+id/action_button_1"
+            android:id="@+id/abtn_app"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

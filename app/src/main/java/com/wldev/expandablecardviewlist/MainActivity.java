@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         //arrayList.add(new Item("硬件信息", collectAllInfo.getAllInfo(MainActivity.this)));
 
         // 获取系统信息测试
+        /**
         SystemInfo systemInfo = new SystemInfo(MainActivity.this);
         arrayList.add(new Item("系统信息", systemInfo.getSystemInfo()));
 
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         // 获取系统安装APP测试
         ApplicationInfo applicationInfo = new ApplicationInfo(this);
         arrayList.add(new Item("安装APP信息", applicationInfo.getInfo()));
+         **/
 
 
         binding.recyclerView.setAdapter(new ExpandableRecyclerViewAdapter(arrayList));
