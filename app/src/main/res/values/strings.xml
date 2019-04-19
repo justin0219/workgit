@@ -1,51 +1,13 @@
 <resources>
-    <string name="app_name">Spy all</string>
+    <string name="app_name">设备信息搜集器l</string>
     <string name="subscribe">Subscribe</string>
     <string name="details">details</string>
-    <string name="full_plan"><![CDATA[<p>系统
-</p>
-<ul>
-  <li>Access to entire 5,000+ course library</li>
-  <li>Learning paths</li>
-  <li>Skill measurement</li>
-  <li>Exercise files</li>
-  <li>Course learning checks</li>
-  <li>Completion certificates</li>
-  <li>Mobile apps</li>
-  <li>Offline viewing</li>
-</ul>]]></string>
 
-    <string name="first_plan"><![CDATA[<p>用户
-</p>
-<ul>
-  <li>Access to entire 5,000+ course library</li>
-  <li>Learning paths</li>
-</ul>]]></string>
-
-    <string name="second_plan"><![CDATA[<p>App
-</p>
-<ul>
-  <li>Access to entire 5,000+ course library</li>
-  <li>Learning paths</li>
-  <li>Mobile apps</li>
-  <li>Offline viewing</li>
-</ul>]]></string>
-
-    <string name="third_plan"><![CDATA[<p>位置信息
-</p>
-<ul>
-  <li>Access to entire 5,000+ course library</li>
-  <li>Learning paths</li>
-   <li>Course learning checks</li>
-  <li>Completion certificates</li>
-  <li>Mobile apps</li>
-  <li>Offline viewing</li>
-</ul>]]></string>
     <string name="title_activity_navi">NaviActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Spy all</string>
-    <string name="nav_header_subtitle">Group 4 by XXXXXX</string>
+    <string name="nav_header_title">设备信息搜集器</string>
+    <string name="nav_header_subtitle">获取您的设备信息</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
