@@ -41,7 +41,6 @@
             android:layout_marginTop="10dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/colorSecondaryTextDefaultMaterialLight"
-            app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toStartOf="@+id/media_image"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/item_apps_name" />
@@ -52,25 +51,12 @@
             android:layout_height="80dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="30dp"
-            android:src="@mipmap/iconfinder_hacker"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/application_icon"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:color/darker_gray" />
 
-        <Button
-            android:id="@+id/button"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="0dp"
-            android:paddingEnd="8dp"
-            android:paddingStart="8dp"
-            android:text="app"
-            android:textColor="@color/colorPrimaryTextDefaultMaterialLight"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/media_image" />
 
     </android.support.constraint.ConstraintLayout>
 
