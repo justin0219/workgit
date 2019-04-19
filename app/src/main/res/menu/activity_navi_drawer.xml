@@ -15,14 +15,14 @@
         <item
             android:id="@+id/nav_sensor"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="sensor information" />
+            android:title="Sensor information" />
         <item
             android:id="@+id/nav_app"
             android:icon="@drawable/ic_menu_manage"
-            android:title="app information" />
+            android:title="App information" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="For Future Use">
         <menu>
             <item
                 android:id="@+id/nav_share"

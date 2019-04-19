@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.deviceinfocollector.applicationinfo.ApplicationInfo;
 import com.example.deviceinfocollector.deviceinfo.CollectAllInfo;
@@ -181,6 +182,7 @@ public class NaviActivity extends AppCompatActivity
             fragment.setArguments(data);
         } else {
             Log.w("navigation selected", "other navigation");
+            Toast.makeText(NaviActivity.this, "别点啦 不会有效果滴~", Toast.LENGTH_SHORT).show();
         }
         if (fragment != null) {
             this.currentFragment = fragment;
