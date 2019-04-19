@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.wldev.expandablecardviewlist.R;
-import com.wldev.expandablecardviewlist.data.DeviceData;
 import com.wldev.expandablecardviewlist.data.SystemData;
 
 import java.util.ArrayList;
@@ -19,18 +18,17 @@ import java.util.List;
 public class SystemInfoAdapter extends ArrayAdapter<SystemData> {
     private final LayoutInflater mInflater;
     private ArrayList<SystemData> systemDatas;
+
     public SystemInfoAdapter(ArrayList<SystemData> systemDatas, @NonNull Context context, int resource) {
         super(context, resource);
         this.systemDatas = systemDatas;
-        mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public void setData(List<SystemData> data)
-    {
+    public void setData(List<SystemData> data) {
         clear();
-        if(data!=null)
-        {
-            for(SystemData systemData :data)
+        if (data != null) {
+            for (SystemData systemData : data)
                 add(systemData);
         }
     }
@@ -55,18 +53,17 @@ public class SystemInfoAdapter extends ArrayAdapter<SystemData> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view;
 
-        if(convertView == null)
+        if (convertView == null)
             view = mInflater.inflate(R.layout.itemcard_systeminfo, parent, false);
         else
             view = convertView;
         SystemData systemData = this.systemDatas.get(position);
-        ((TextView)view.findViewById(R.id.tv_system_label)).setText(systemData.getLabelName());
-        ((TextView)view.findViewById(R.id.tv_system_value)).setText(systemData.getLabelValue());
+        ((TextView) view.findViewById(R.id.tv_system_label)).setText(systemData.getLabelName());
+        ((TextView) view.findViewById(R.id.tv_system_value)).setText(systemData.getLabelValue());
         return view;
     }
 
-    public void refresh(ArrayList<SystemData> systemDatas)
-    {
+    public void refresh(ArrayList<SystemData> systemDatas) {
         this.systemDatas = systemDatas;
         notifyDataSetChanged();
     }

@@ -17,10 +17,9 @@ import github.nisrulz.easydeviceinfo.base.EasyCpuMod;
 public class CPUInfo extends BaseInfo {
 
     private static final String TAG = "CPUInfo";
-
+    private static String MTAB = "\n";
     private String abis;
     private int cpuCores = 0;
-    private static String MTAB = "\n";
 
     CPUInfo(AppCompatActivity activity) {
         super(activity);

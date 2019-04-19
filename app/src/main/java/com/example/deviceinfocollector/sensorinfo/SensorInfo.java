@@ -11,8 +11,8 @@ import java.util.List;
 
 public class SensorInfo {
 
-    private Context context;
     private final String ENTER = "\n#### ";
+    private Context context;
 
     public SensorInfo(Context context) {
         this.context = context;
@@ -214,7 +214,7 @@ public class SensorInfo {
                     stype = "未知传感器(unknown)";
                     break;
             }
-            sensorData.add(new SensorData(s.getName(), s.getVendor() +" "+s.getVersion(), stype));
+            sensorData.add(new SensorData(s.getName(), s.getVendor() + " " + s.getVersion(), stype));
         }
         return sensorData;
     }

@@ -5,10 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
-import com.example.deviceinfocollector.applicationinfo.ApplicationInfo;
-import com.example.deviceinfocollector.deviceinfo.CollectAllInfo;
-import com.example.deviceinfocollector.sensorinfo.SensorInfo;
-import com.example.deviceinfocollector.systeminfo.SystemInfo;
 import com.wldev.expandablecardviewlist.data.Item;
 import com.wldev.expandablecardviewlist.databinding.ActivityMainBinding;
 import com.wldev.expandablecardviewlist.recyclerview.ExpandableRecyclerViewAdapter;
@@ -38,17 +34,17 @@ public class MainActivity extends AppCompatActivity {
 
         // 获取系统信息测试
         /**
-        SystemInfo systemInfo = new SystemInfo(MainActivity.this);
-        arrayList.add(new Item("系统信息", systemInfo.getSystemInfo()));
+         SystemInfo systemInfo = new SystemInfo(MainActivity.this);
+         arrayList.add(new Item("系统信息", systemInfo.getSystemInfo()));
 
 
-        // 获取传感器信息测试
-        SensorInfo sensorInfo = new SensorInfo(this);
-        arrayList.add(new Item("传感器信息", sensorInfo.getInfo()));
+         // 获取传感器信息测试
+         SensorInfo sensorInfo = new SensorInfo(this);
+         arrayList.add(new Item("传感器信息", sensorInfo.getInfo()));
 
-        // 获取系统安装APP测试
-        ApplicationInfo applicationInfo = new ApplicationInfo(this);
-        arrayList.add(new Item("安装APP信息", applicationInfo.getInfo()));
+         // 获取系统安装APP测试
+         ApplicationInfo applicationInfo = new ApplicationInfo(this);
+         arrayList.add(new Item("安装APP信息", applicationInfo.getInfo()));
          **/
 
 

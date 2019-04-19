@@ -30,8 +30,8 @@ import github.nisrulz.easydeviceinfo.base.EasyDeviceMod;
  */
 public class SystemInfo {
 
-    private AppCompatActivity mainActivity;
     private static String MTAB = "\n";
+    private AppCompatActivity mainActivity;
 
     public SystemInfo(AppCompatActivity mainActivity) {
         this.mainActivity = mainActivity;
@@ -44,7 +44,7 @@ public class SystemInfo {
                 MTAB + getAvailMemory() +
                 MTAB + getPhoneInfo() +
                 MTAB + getDriveInfo() +
-                MTAB+ getModelInfo() +
+                MTAB + getModelInfo() +
                 MTAB + getSystemAPInfo() +
                 MTAB + getVersionStringInfo() +
                 MTAB + getProductInfo() +
@@ -195,7 +195,7 @@ public class SystemInfo {
     private String getWidth() {
         int width = this.mainActivity.getWindowManager().getDefaultDisplay().getWidth();
         // "屏幕宽度: "
-        return + width + "";
+        return +width + "";
     }
 
 
@@ -268,8 +268,7 @@ public class SystemInfo {
         return cpuInfo[1];
     }
 
-    public ArrayList<SystemData> getSystemDatas()
-    {
+    public ArrayList<SystemData> getSystemDatas() {
         ArrayList<SystemData> systemDatas = new ArrayList<>();
         systemDatas.add(new SystemData("size(hight X width)", getHeight() + " X " + getWidth()));
         systemDatas.add(new SystemData("avail memory", getAvailMemory()));

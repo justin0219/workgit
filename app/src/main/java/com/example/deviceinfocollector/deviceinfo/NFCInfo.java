@@ -10,8 +10,8 @@ import github.nisrulz.easydeviceinfo.base.EasyNfcMod;
  */
 public class NFCInfo extends BaseInfo {
 
-    private String nfcStatus;
     private static String MTAB = "\n";
+    private String nfcStatus;
 
     NFCInfo(AppCompatActivity activity) {
         super(activity);

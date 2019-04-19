@@ -12,6 +12,7 @@ import github.nisrulz.easydeviceinfo.base.EasyBatteryMod;
  */
 public class BatteryInfo extends BaseInfo {
 
+    private static String MTAB = "\n";
     private String isDeviceCharging;
     private String BatteryPercentage;
     private String batteryTechnology;
@@ -20,12 +21,9 @@ public class BatteryInfo extends BaseInfo {
     private String batteryHealth;
     private String isChargingVia;
 
-
     BatteryInfo(AppCompatActivity activity) {
         super(activity);
     }
-    private static String MTAB = "\n";
-
 
     @Override
     public void init() {

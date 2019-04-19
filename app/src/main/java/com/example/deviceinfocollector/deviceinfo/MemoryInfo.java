@@ -1,20 +1,21 @@
 package com.example.deviceinfocollector.deviceinfo;
 
 import android.support.v7.app.AppCompatActivity;
-import github.nisrulz.easydeviceinfo.base.EasyMemoryMod;
 
 import java.text.DecimalFormat;
+
+import github.nisrulz.easydeviceinfo.base.EasyMemoryMod;
 
 /**
  * @author wh1t3P1g
  * @since 2019-04-09
  */
-public class MemoryInfo extends BaseInfo{
+public class MemoryInfo extends BaseInfo {
 
+    private static String MTAB = "\n";
     private String totalMemory;
     private String totalInternalMemorySize;
     private String totalExternalMemorySize;
-    private static String MTAB = "\n";
 
     MemoryInfo(AppCompatActivity activity) {
         super(activity);
@@ -45,7 +46,7 @@ public class MemoryInfo extends BaseInfo{
 
     private void setTotalMemory(float totalMemory) {
         String memory = new DecimalFormat(".00").format(totalMemory);
-        this.totalMemory = memory+"Gb";
+        this.totalMemory = memory + "Gb";
     }
 
     private String getTotalInternalMemorySize() {
@@ -54,7 +55,7 @@ public class MemoryInfo extends BaseInfo{
 
     private void setTotalInternalMemorySize(float totalInternalMemorySize) {
         String memory = new DecimalFormat(".00").format(totalInternalMemorySize);
-        this.totalInternalMemorySize = memory+"Gb";
+        this.totalInternalMemorySize = memory + "Gb";
     }
 
     private String getTotalExternalMemorySize() {
@@ -63,6 +64,6 @@ public class MemoryInfo extends BaseInfo{
 
     private void setTotalExternalMemorySize(float totalExternalMemorySize) {
         String memory = new DecimalFormat(".00").format(totalExternalMemorySize);
-        this.totalExternalMemorySize = memory+"Gb";
+        this.totalExternalMemorySize = memory + "Gb";
     }
 }

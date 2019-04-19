@@ -6,7 +6,6 @@ import android.databinding.Bindable;
 import com.wldev.expandablecardviewlist.BR;
 
 
-
 public class ExpandStateItem extends BaseObservable {
 
     @Bindable
@@ -40,13 +39,13 @@ public class ExpandStateItem extends BaseObservable {
         return expanded;
     }
 
-    public float getMargin() {
-        return margin;
-    }
-
     public void setExpanded(boolean expanded) {
         this.expanded = expanded;
         notifyPropertyChanged(BR.expanded);
+    }
+
+    public float getMargin() {
+        return margin;
     }
 
     public void setMargin(float margin) {

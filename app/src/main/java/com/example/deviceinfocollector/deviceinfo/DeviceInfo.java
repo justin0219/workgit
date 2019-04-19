@@ -10,6 +10,7 @@ import github.nisrulz.easydeviceinfo.base.EasyDeviceMod;
  */
 public class DeviceInfo extends BaseInfo {
 
+    private static String MTAB = "\n";
     private String board;
     private String screenDisplayID;
     private String radioVer;
@@ -18,8 +19,6 @@ public class DeviceInfo extends BaseInfo {
     private String hardware;
     private String bootloader;
     private String fingerprint;
-
-    private static String MTAB = "\n";
 
     DeviceInfo(AppCompatActivity activity) {
         super(activity);

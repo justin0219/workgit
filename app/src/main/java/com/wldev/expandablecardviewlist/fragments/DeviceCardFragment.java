@@ -1,38 +1,19 @@
 package com.wldev.expandablecardviewlist.fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
-import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.HttpAuthHandler;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
 import com.wldev.expandablecardviewlist.R;
 import com.wldev.expandablecardviewlist.adapter.DeviceInfoAdapter;
-import com.wldev.expandablecardviewlist.adapter.SensorInfoAdapter;
 import com.wldev.expandablecardviewlist.data.DeviceData;
-import com.wldev.expandablecardviewlist.data.SensorData;
-import com.yydcdut.markdown.syntax.text.TextFactory;
-import com.yydcdut.rxmarkdown.RxMarkdown;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
-
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -50,10 +31,6 @@ public class DeviceCardFragment extends ListFragment {
     // TODO: Rename and change types of parameters
     private ArrayList<DeviceData> mParamDevice;
     private DeviceInfoAdapter adapter;
-
-    public DeviceInfoAdapter getAdapter() {
-        return adapter;
-    }
 
     public DeviceCardFragment() {
         // Required empty public constructor
@@ -74,6 +51,10 @@ public class DeviceCardFragment extends ListFragment {
         return fragment;
     }
 
+    public DeviceInfoAdapter getAdapter() {
+        return adapter;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,15 +69,14 @@ public class DeviceCardFragment extends ListFragment {
         }
 
         /**
-        final Handler refreshHandler = new Handler();
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                // do updates for imageview
-                refreshHandler.postDelayed(this, 1 * 1000);
-            }
+         final Handler refreshHandler = new Handler();
+         Runnable runnable = new Runnable() {
+        @Override public void run() {
+        // do updates for imageview
+        refreshHandler.postDelayed(this, 1 * 1000);
+        }
         };
-        refreshHandler.postDelayed(runnable, 1 * 1000);
+         refreshHandler.postDelayed(runnable, 1 * 1000);
          **/
     }
 

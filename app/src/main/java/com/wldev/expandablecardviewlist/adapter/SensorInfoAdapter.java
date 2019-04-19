@@ -18,18 +18,17 @@ import java.util.List;
 public class SensorInfoAdapter extends ArrayAdapter<SensorData> {
     private final LayoutInflater mInflater;
     private ArrayList<SensorData> sensorData;
+
     public SensorInfoAdapter(ArrayList<SensorData> sensorData, @NonNull Context context, int resource) {
         super(context, resource);
         this.sensorData = sensorData;
-        mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public void setData(List<SensorData> data)
-    {
+    public void setData(List<SensorData> data) {
         clear();
-        if(data!=null)
-        {
-            for(SensorData sensorData :data)
+        if (data != null) {
+            for (SensorData sensorData : data)
                 add(sensorData);
         }
     }
@@ -55,19 +54,18 @@ public class SensorInfoAdapter extends ArrayAdapter<SensorData> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view;
 
-        if(convertView == null)
+        if (convertView == null)
             view = mInflater.inflate(R.layout.itemcard_sensorinfo, parent, false);
         else
             view = convertView;
         SensorData sensorData = this.sensorData.get(getCount() - position - 1);
-        ((TextView)view.findViewById(R.id.sensor_name)).setText(sensorData.getSensorName());
-        ((TextView)view.findViewById(R.id.sensor_factory)).setText(sensorData.getSensorFactory());
-        ((TextView)view.findViewById(R.id.sensor_detail)).setText(sensorData.getSensorDetail());
+        ((TextView) view.findViewById(R.id.sensor_name)).setText(sensorData.getSensorName());
+        ((TextView) view.findViewById(R.id.sensor_factory)).setText(sensorData.getSensorFactory());
+        ((TextView) view.findViewById(R.id.sensor_detail)).setText(sensorData.getSensorDetail());
         return view;
     }
 
-    public void refresh(ArrayList<SensorData> sensorData)
-    {
+    public void refresh(ArrayList<SensorData> sensorData) {
         this.sensorData = sensorData;
         notifyDataSetChanged();
     }

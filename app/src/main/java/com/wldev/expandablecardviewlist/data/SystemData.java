@@ -13,12 +13,12 @@ public class SystemData {
         return labelName;
     }
 
-    public String getLabelValue() {
-        return labelValue;
-    }
-
     public void setLabelName(String labelName) {
         this.labelName = labelName;
+    }
+
+    public String getLabelValue() {
+        return labelValue;
     }
 
     public void setLabelValue(String labelValue) {

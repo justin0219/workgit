@@ -29,13 +29,7 @@ public class SensorCardFragment extends ListFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM_SENSORINFO = "param_sensorinfo";
-
-    public SensorInfoAdapter getAdapter() {
-        return adapter;
-    }
-
     SensorInfoAdapter adapter;
-
     private ArrayList<SensorData> mParamSensorsinfo;
 
     public SensorCardFragment() {
@@ -57,6 +51,10 @@ public class SensorCardFragment extends ListFragment {
         return fragment;
     }
 
+    public SensorInfoAdapter getAdapter() {
+        return adapter;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +64,7 @@ public class SensorCardFragment extends ListFragment {
         adapter = new SensorInfoAdapter(sensorDatas, getActivity(), R.layout.fragment_sensor_card);
         setListAdapter(adapter);
         if (getArguments() != null) {
-            mParamSensorsinfo = (ArrayList<SensorData>)getArguments().getSerializable(ARG_PARAM_SENSORINFO);
+            mParamSensorsinfo = (ArrayList<SensorData>) getArguments().getSerializable(ARG_PARAM_SENSORINFO);
         }
     }
 
@@ -80,7 +78,7 @@ public class SensorCardFragment extends ListFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mParamSensorsinfo = (ArrayList<SensorData>)getArguments().getSerializable(ARG_PARAM_SENSORINFO);
+        mParamSensorsinfo = (ArrayList<SensorData>) getArguments().getSerializable(ARG_PARAM_SENSORINFO);
         Log.w("fragment", "view apps fragment");
         adapter.refresh(mParamSensorsinfo);
     }

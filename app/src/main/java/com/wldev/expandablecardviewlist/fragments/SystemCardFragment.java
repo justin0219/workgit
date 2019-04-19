@@ -30,11 +30,6 @@ public class SystemCardFragment extends ListFragment {
 
     // TODO: Rename and change types of parameters
     private ArrayList<SystemData> mParamSysinfo;
-
-    public SystemInfoAdapter getAdapter() {
-        return adapter;
-    }
-
     private SystemInfoAdapter adapter;
 
     public SystemCardFragment() {
@@ -44,6 +39,7 @@ public class SystemCardFragment extends ListFragment {
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
+     *
      * @return A new instance of fragment SystemCardFragment.
      */
     // TODO: Rename and change types and number of parameters
@@ -53,6 +49,10 @@ public class SystemCardFragment extends ListFragment {
         args.putString(ARG_PARAM_SYSINFO, mParamSysinfo);
         fragment.setArguments(args);
         return fragment;
+    }
+
+    public SystemInfoAdapter getAdapter() {
+        return adapter;
     }
 
     @Override
@@ -67,7 +67,7 @@ public class SystemCardFragment extends ListFragment {
         setListAdapter(adapter);
         // get args
         if (getArguments() != null) {
-            mParamSysinfo = (ArrayList<SystemData>)getArguments().getSerializable(ARG_PARAM_SYSINFO);
+            mParamSysinfo = (ArrayList<SystemData>) getArguments().getSerializable(ARG_PARAM_SYSINFO);
         }
     }
 
@@ -77,8 +77,8 @@ public class SystemCardFragment extends ListFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_system_card, container, false);
         /**
-        final TextView mtextview = (TextView) view.findViewById(R.id.text_systeminfo);
-        mtextview.setMovementMethod(ScrollingMovementMethod.getInstance());
+         final TextView mtextview = (TextView) view.findViewById(R.id.text_systeminfo);
+         mtextview.setMovementMethod(ScrollingMovementMethod.getInstance());
          **/
         return view;
     }
@@ -86,28 +86,25 @@ public class SystemCardFragment extends ListFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mParamSysinfo = (ArrayList<SystemData>)getArguments().getSerializable(ARG_PARAM_SYSINFO);
+        mParamSysinfo = (ArrayList<SystemData>) getArguments().getSerializable(ARG_PARAM_SYSINFO);
         adapter.refresh(mParamSysinfo);
         /**
-        final TextView mtextview = ((TextView)view.findViewById(R.id.text_systeminfo));
-        Log.w("fragment", "view fragment system");
-        RxMarkdown.with(mParamSysinfo, getActivity())
-                .factory(TextFactory.create())
-                .intoObservable()
-                .subscribeOn(Schedulers.computation())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<CharSequence>() {
-                    @Override
-                    public void onCompleted() {}
+         final TextView mtextview = ((TextView)view.findViewById(R.id.text_systeminfo));
+         Log.w("fragment", "view fragment system");
+         RxMarkdown.with(mParamSysinfo, getActivity())
+         .factory(TextFactory.create())
+         .intoObservable()
+         .subscribeOn(Schedulers.computation())
+         .observeOn(AndroidSchedulers.mainThread())
+         .subscribe(new Subscriber<CharSequence>() {
+        @Override public void onCompleted() {}
 
-                    @Override
-                    public void onError(Throwable e) {}
+        @Override public void onError(Throwable e) {}
 
-                    @Override
-                    public void onNext(CharSequence charSequence) {
-                        mtextview.setText(charSequence, TextView.BufferType.SPANNABLE);
-                    }
-                });
+        @Override public void onNext(CharSequence charSequence) {
+        mtextview.setText(charSequence, TextView.BufferType.SPANNABLE);
+        }
+        });
          **/
     }
 }

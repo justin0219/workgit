@@ -17,18 +17,15 @@ public class MyHTMLTagHandler implements Html.TagHandler {
 
     private static final String TAG = MyHTMLTagHandler.class.getSimpleName();
     private String listSymbol;
-
-
+    private boolean first = true;
+    private String parent = null;
+    private int index = 1;
     public MyHTMLTagHandler(boolean useChecks) {
         if (useChecks)
             listSymbol = "✓";
         else
             listSymbol = "•";
     }
-
-    private boolean first = true;
-    private String parent = null;
-    private int index = 1;
 
     @Override
     public void handleTag(boolean opening, String tag, Editable output,

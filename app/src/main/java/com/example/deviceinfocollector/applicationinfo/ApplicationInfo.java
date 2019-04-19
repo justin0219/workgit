@@ -15,8 +15,8 @@ import java.util.Map;
 
 public class ApplicationInfo {
 
-    private Context context;
     private final String ENTER = "\n";
+    private Context context;
 
     public ApplicationInfo(Context context) {
         this.context = context;
@@ -34,6 +34,7 @@ public class ApplicationInfo {
         }
         return result.toString();
     }
+
     public Map<String, String> getMapInfo() {
         StringBuilder result = new StringBuilder();
         PackageManager pm = context.getPackageManager();
@@ -53,8 +54,7 @@ public class ApplicationInfo {
         return map_info;
     }
 
-    public ArrayList<AppData> getListAppInfo()
-    {
+    public ArrayList<AppData> getListAppInfo() {
         StringBuilder result = new StringBuilder();
         PackageManager pm = context.getPackageManager();
         List<PackageInfo> installedPackages = pm.getInstalledPackages(PackageManager.GET_UNINSTALLED_PACKAGES);

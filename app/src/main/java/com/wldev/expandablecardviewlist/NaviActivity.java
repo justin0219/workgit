@@ -41,16 +41,13 @@ public class NaviActivity extends AppCompatActivity
     private static final String ARG_PARAM_SYSINFO = "param_sysinfo";
     private static final String ARG_PARAM_SENSORINFO = "param_sensorinfo";
     private static final String ARG_PARAM_APPSINFO = "param_appsinfo";
-
-    private ArrayList<DeviceData> deviceDatas;
-
     DeviceCardFragment deviceCardFragment = null;
     SystemCardFragment systemCardFragment = null;
     SensorCardFragment sensorCardFragment = null;
     AppCardFragment appCardFragment = null;
     ListFragment currentFragment = null;
-
     boolean isDeviceFragment;
+    private ArrayList<DeviceData> deviceDatas;
     private Handler mHandler;
 
 

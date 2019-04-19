@@ -12,6 +12,14 @@ import java.util.ArrayList;
  */
 public class CollectAllInfo {
 
+    CPUInfo cpuInfo;
+    NFCInfo nfcInfo;
+    SDCardInfo sdCardInfo;
+    DeviceInfo deviceInfo;
+    MemoryInfo memoryInfo;
+    BatteryInfo batteryInfo;
+    DisplayInfo displayInfo;
+
     public CollectAllInfo(AppCompatActivity activity) {
         this.cpuInfo = new CPUInfo(activity);
         this.nfcInfo = new NFCInfo(activity);
@@ -49,14 +57,6 @@ public class CollectAllInfo {
     public DisplayInfo getDisplayInfo() {
         return displayInfo;
     }
-
-    CPUInfo cpuInfo;
-    NFCInfo nfcInfo;
-    SDCardInfo sdCardInfo;
-    DeviceInfo deviceInfo;
-    MemoryInfo memoryInfo;
-    BatteryInfo batteryInfo;
-    DisplayInfo displayInfo;
 
     public void updateAllInfo(AppCompatActivity activity) {
         this.cpuInfo = new CPUInfo(activity);

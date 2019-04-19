@@ -10,8 +10,8 @@ import github.nisrulz.easydeviceinfo.base.EasyConfigMod;
  */
 public class SDCardInfo extends BaseInfo {
 
-    private String hasSD;
     private static String MTAB = "\n";
+    private String hasSD;
 
     SDCardInfo(AppCompatActivity activity) {
         super(activity);

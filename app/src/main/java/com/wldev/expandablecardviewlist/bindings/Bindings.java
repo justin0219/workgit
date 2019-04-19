@@ -36,7 +36,7 @@ public class Bindings {
 
     @BindingAdapter({"layout_marginLeft"})
     public static void setMarginLeft(View layout, float margin) {
-        if (layout.getLayoutParams() instanceof ViewGroup.MarginLayoutParams){
+        if (layout.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) layout.getLayoutParams();
             params.leftMargin = (int) margin;
             layout.setLayoutParams(params);
@@ -45,7 +45,7 @@ public class Bindings {
 
     @BindingAdapter({"layout_marginRight"})
     public static void setMarginRight(View layout, float margin) {
-        if (layout.getLayoutParams() instanceof ViewGroup.MarginLayoutParams){
+        if (layout.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) layout.getLayoutParams();
             params.rightMargin = (int) margin;
             layout.setLayoutParams(params);
@@ -54,7 +54,7 @@ public class Bindings {
 
     @BindingAdapter({"layout_marginTop"})
     public static void setMarginTop(View layout, float margin) {
-        if (layout.getLayoutParams() instanceof ViewGroup.MarginLayoutParams){
+        if (layout.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) layout.getLayoutParams();
             params.topMargin = (int) margin;
             layout.setLayoutParams(params);
@@ -63,7 +63,7 @@ public class Bindings {
 
     @BindingAdapter({"layout_marginBottom"})
     public static void setMarginBottom(View layout, float margin) {
-        if (layout.getLayoutParams() instanceof ViewGroup.MarginLayoutParams){
+        if (layout.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) layout.getLayoutParams();
             params.bottomMargin = (int) margin;
             layout.setLayoutParams(params);
@@ -71,7 +71,7 @@ public class Bindings {
     }
 
     @BindingAdapter({"onClick"})
-    public static void setOnClick(View view, View.OnClickListener listener){
+    public static void setOnClick(View view, View.OnClickListener listener) {
         view.setOnClickListener(listener);
     }
 
@@ -84,22 +84,21 @@ public class Bindings {
     }
 
     @BindingAdapter({"html"})
-    public static void setHTMLTextToTV(TextView textView, String text){
-        setHTMLTextToTV(textView, text,false);
+    public static void setHTMLTextToTV(TextView textView, String text) {
+        setHTMLTextToTV(textView, text, false);
     }
 
-    @BindingAdapter({"html","useChecks"})
-    public static void setHTMLTextToTV(TextView textView, String text, boolean useChecks){
+    @BindingAdapter({"html", "useChecks"})
+    public static void setHTMLTextToTV(TextView textView, String text, boolean useChecks) {
         Log.d(TAG, "setHTMLTextToTV: ");
-        if (text == null || text.length()==0) {
+        if (text == null || text.length() == 0) {
             textView.setText("");
             return;
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            textView.setText(Html.fromHtml(text,Html.FROM_HTML_MODE_LEGACY,null,new MyHTMLTagHandler(useChecks)));
-        }
-        else
-            textView.setText(Html.fromHtml(text,null,new MyHTMLTagHandler(useChecks)));
+            textView.setText(Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY, null, new MyHTMLTagHandler(useChecks)));
+        } else
+            textView.setText(Html.fromHtml(text, null, new MyHTMLTagHandler(useChecks)));
     }
 
 

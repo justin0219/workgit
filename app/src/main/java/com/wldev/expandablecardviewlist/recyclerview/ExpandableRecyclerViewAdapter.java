@@ -19,11 +19,9 @@ public class ExpandableRecyclerViewAdapter extends RecyclerView.Adapter<BindingV
 
     private static final float MAX_MARGIN = 16;
     private static final float MIN_MARGIN = 2;
-
-    private ValueAnimator marginAnimator = ValueAnimator.ofFloat(MAX_MARGIN, MIN_MARGIN); // replace with dimens
-
     private final List<Item> data = new ArrayList<>();
     private final List<ExpandStateItem> states = new ArrayList<>();
+    private ValueAnimator marginAnimator = ValueAnimator.ofFloat(MAX_MARGIN, MIN_MARGIN); // replace with dimens
     private boolean isListExpanded;
 
     public ExpandableRecyclerViewAdapter(List<Item> originData) {

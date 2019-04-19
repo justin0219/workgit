@@ -10,12 +10,11 @@ import github.nisrulz.easydeviceinfo.base.EasyDisplayMod;
  */
 public class DisplayInfo extends BaseInfo {
 
+    private static String MTAB = "\n";
     private String resolution;
     private String density;
     private String refreshRate;
     private String physicalSize;
-
-    private static String MTAB = "\n";
 
     DisplayInfo(AppCompatActivity activity) {
         super(activity);

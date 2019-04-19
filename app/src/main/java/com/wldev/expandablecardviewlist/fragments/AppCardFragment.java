@@ -20,19 +20,12 @@ import java.util.ArrayList;
  * Use the {@link AppCardFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AppCardFragment extends ListFragment{
+public class AppCardFragment extends ListFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM_APPSINFO = "param_appsinfo";
-
-    public AppsInfoAdapter getAdapter() {
-        return adapter;
-    }
-
     AppsInfoAdapter adapter;
-
     private ArrayList<AppData> mParamAppsinfo;
-
 
     public AppCardFragment() {
         // Required empty public constructor
@@ -53,6 +46,10 @@ public class AppCardFragment extends ListFragment{
         return fragment;
     }
 
+    public AppsInfoAdapter getAdapter() {
+        return adapter;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +59,7 @@ public class AppCardFragment extends ListFragment{
         adapter = new AppsInfoAdapter(appData, getActivity(), R.layout.fragment_app_card);
         setListAdapter(adapter);
         if (getArguments() != null) {
-            mParamAppsinfo = (ArrayList<AppData>)getArguments().getSerializable(ARG_PARAM_APPSINFO);
+            mParamAppsinfo = (ArrayList<AppData>) getArguments().getSerializable(ARG_PARAM_APPSINFO);
         }
     }
 
@@ -76,7 +73,7 @@ public class AppCardFragment extends ListFragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mParamAppsinfo = (ArrayList<AppData>)getArguments().getSerializable(ARG_PARAM_APPSINFO);
+        mParamAppsinfo = (ArrayList<AppData>) getArguments().getSerializable(ARG_PARAM_APPSINFO);
         Log.w("fragment", "view apps fragment");
         //mParamAppsinfo.add(new AppData("package", "app name"));
         adapter.refresh(mParamAppsinfo);
