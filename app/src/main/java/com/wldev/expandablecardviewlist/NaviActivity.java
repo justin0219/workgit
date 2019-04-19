@@ -3,19 +3,16 @@ package com.wldev.expandablecardviewlist;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
-import android.util.Log;
-import android.view.View;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -38,16 +35,14 @@ import java.util.TimerTask;
 public class NaviActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String TAG = "NaviActivity";
+
     private static final String ARG_PARAM_DEVICE = "param_device";
     private static final String ARG_PARAM_SYSINFO = "param_sysinfo";
     private static final String ARG_PARAM_SENSORINFO = "param_sensorinfo";
     private static final String ARG_PARAM_APPSINFO = "param_appsinfo";
 
     private ArrayList<DeviceData> deviceDatas;
-
-    public DeviceCardFragment getDeviceCardFragment() {
-        return deviceCardFragment;
-    }
 
     DeviceCardFragment deviceCardFragment = null;
     SystemCardFragment systemCardFragment = null;
@@ -72,7 +67,7 @@ public class NaviActivity extends AppCompatActivity
         Bundle data = new Bundle();
         data.putSerializable(ARG_PARAM_DEVICE, this.deviceDatas);
         this.deviceCardFragment = new DeviceCardFragment();
-        if(this.deviceCardFragment != null) {
+        if (this.deviceCardFragment != null) {
             this.deviceCardFragment.setArguments(data);
             displaySelectedFragment(this.deviceCardFragment);
             isDeviceFragment = true;
@@ -84,58 +79,18 @@ public class NaviActivity extends AppCompatActivity
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                ArrayList<DeviceData> mdeviceDatas = (ArrayList<DeviceData>)msg.obj;
+                ArrayList<DeviceData> mdeviceDatas = (ArrayList<DeviceData>) msg.obj;
                 deviceCardFragment.getAdapter().refresh(mdeviceDatas);
             }
         };
-        /**
-        Thread thread = new Thread(){
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        while (true)
-                        {
-
-                            if(isDeviceFragment) {
-                                DeviceCardFragment mdevFragment = deviceCardFragment;
-                                if (mdevFragment != null) {
-                                    CollectAllInfo collectAllInfo = new CollectAllInfo(NaviActivity.this);
-                                    ArrayList<DeviceData> mdeviceDatas = collectAllInfo.getDeviceDatas();
-                                    //Bundle data = new Bundle();
-                                    //data.putSerializable(ARG_PARAM_DEVICE, mdeviceDatas);
-                                    //mdevFragment.setArguments(data);
-                                    Message message = new Message();
-                                    message.obj = mdeviceDatas;
-                                    //mHandler.sendMessage(message);
-                                    //displaySelectedFragment(mdevFragment);
-                                }
-                                Log.w("Navi Acivity", "update view");
-                            }
-                            try {
-                                Thread.sleep(3000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-                    }
-                });
-            }
-        };
-        thread.start();
-        **/
 
         // timer update
-
         Timer timer = new Timer();
-        timer.schedule(new TimerTask(){
+        timer.schedule(new TimerTask() {
             @Override
-            public void run(){
-                while (true)
-                {
-                    if(isDeviceFragment) {
+            public void run() {
+                while (true) {
+                    if (isDeviceFragment) {
                         DeviceCardFragment mdevFragment = deviceCardFragment;
                         if (mdevFragment != null) {
                             CollectAllInfo collectAllInfo = new CollectAllInfo(NaviActivity.this);
@@ -144,38 +99,30 @@ public class NaviActivity extends AppCompatActivity
                             message.obj = mdeviceDatas;
                             mHandler.sendMessage(message);
                         }
-                        Log.w("Navi Acivity", "update view");
+                        Log.w(TAG, "update view");
                     }
                 }
             }
         }, 0, 500);
 
         // set toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Noting", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -219,7 +166,7 @@ public class NaviActivity extends AppCompatActivity
             // put arguments
             Bundle data = new Bundle();
             data.putSerializable(ARG_PARAM_DEVICE, this.deviceDatas);
-            if(this.deviceCardFragment == null) {
+            if (this.deviceCardFragment == null) {
                 Log.d("Navigation", "create DeviceCardFragment");
                 this.deviceCardFragment = new DeviceCardFragment();
             }
@@ -231,7 +178,7 @@ public class NaviActivity extends AppCompatActivity
             SystemInfo systemInfo = new SystemInfo(NaviActivity.this);
             Bundle data = new Bundle();
             data.putSerializable(ARG_PARAM_SYSINFO, systemInfo.getSystemDatas());
-            if(this.systemCardFragment == null)
+            if (this.systemCardFragment == null)
                 this.systemCardFragment = new SystemCardFragment();
             //fragment = new SystemCardFragment();
             fragment = this.systemCardFragment;
@@ -242,7 +189,7 @@ public class NaviActivity extends AppCompatActivity
             //data.putString(ARG_PARAM_SENSORINFO, sensorInfo.getInfo());
             ArrayList<SensorData> sensorData = sensorInfo.getSensorsInfo();
             data.putSerializable(ARG_PARAM_SENSORINFO, sensorData);
-            if(this.sensorCardFragment == null)
+            if (this.sensorCardFragment == null)
                 this.sensorCardFragment = new SensorCardFragment();
             fragment = this.sensorCardFragment;
             fragment.setArguments(data);
@@ -251,22 +198,19 @@ public class NaviActivity extends AppCompatActivity
             ArrayList<AppData> appData = applicationInfo.getListAppInfo();
             Bundle data = new Bundle();
             data.putSerializable(ARG_PARAM_APPSINFO, appData);
-            if(this.appCardFragment == null)
+            if (this.appCardFragment == null)
                 this.appCardFragment = new AppCardFragment();
             fragment = this.appCardFragment;
             fragment.setArguments(data);
-        }
-        else
-        {
+        } else {
             Log.w("navigation selected", "other navigation");
         }
-        if(fragment!=null)
-        {
+        if (fragment != null) {
             this.currentFragment = fragment;
             displaySelectedFragment(fragment);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
