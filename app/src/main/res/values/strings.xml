@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">设备信息搜集器l</string>
+    <string name="app_name">设备信息搜集器</string>
     <string name="subscribe">Subscribe</string>
     <string name="details">details</string>
 
@@ -12,10 +12,10 @@
     <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="device_fragment_loading">Loading device information...</string>
-    <string name="system_fragment_loading">Loading system information...</string>
-    <string name="sensor_fragment_loading">Loading sensor information...</string>
-    <string name="apps_fragment_loading">Loading apps information...</string>
+    <string name="device_fragment_loading">Loading device information…</string>
+    <string name="system_fragment_loading">Loading system information…</string>
+    <string name="sensor_fragment_loading">Loading sensor information…</string>
+    <string name="apps_fragment_loading">Loading apps information…</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
