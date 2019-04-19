@@ -2,7 +2,6 @@ package com.example.deviceinfocollector.deviceinfo;
 
 import android.support.v7.app.AppCompatActivity;
 
-import com.wldev.expandablecardviewlist.NaviActivity;
 import com.wldev.expandablecardviewlist.data.DeviceData;
 
 import java.util.ArrayList;
@@ -13,8 +12,7 @@ import java.util.ArrayList;
  */
 public class CollectAllInfo {
 
-    public CollectAllInfo(AppCompatActivity activity)
-    {
+    public CollectAllInfo(AppCompatActivity activity) {
         this.cpuInfo = new CPUInfo(activity);
         this.nfcInfo = new NFCInfo(activity);
         this.sdCardInfo = new SDCardInfo(activity);
@@ -104,8 +102,7 @@ public class CollectAllInfo {
         return info.toString();
     }
 
-    public ArrayList<DeviceData> getDeviceDatas()
-    {
+    public ArrayList<DeviceData> getDeviceDatas() {
         ArrayList<DeviceData> deviceDatas = new ArrayList<>();
         deviceDatas.add(new DeviceData("Device", this.getDeviceInfo().getInfo()));
         deviceDatas.add(new DeviceData("Battery", this.getBatteryInfo().getInfo()));

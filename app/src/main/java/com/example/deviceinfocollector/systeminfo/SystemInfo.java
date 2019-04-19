@@ -140,13 +140,7 @@ public class SystemInfo {
         // String bool = "Root: 未 Root";
         boolean disRooted = false;
         try {
-            if ((!new File("/system/bin/su").exists()) && (!new File("/system/xbin/su").exists())) {
-                //bool = "Root: 未 Root";
-                disRooted = false;
-            } else {
-                //bool = "Root: 已 Root";
-                disRooted = true;
-            }
+            disRooted = (new File("/system/bin/su").exists()) || (new File("/system/xbin/su").exists());
         } catch (Exception ignored) {
         }
         return disRooted;
@@ -276,29 +270,6 @@ public class SystemInfo {
 
     public ArrayList<SystemData> getSystemDatas()
     {
-        /**
-         *
-         return "## " + "System information" + MTAB + MTAB +
-         getHeight() +
-         MTAB + getWidth() +
-         MTAB + getAvailMemory() +
-         MTAB + getPhoneInfo() +
-         MTAB + getDriveInfo() +
-         MTAB+ getSInfo() +
-         MTAB + getSystemAPInfo() +
-         MTAB + getVersionStringInfo() +
-         MTAB + getProductInfo() +
-         MTAB + getBoardInfo() +
-         MTAB + getUInfo() +
-         MTAB + getCpuInfo() +
-         MTAB + getSoftPackage() +
-         MTAB + getVersionNumber() +
-         MTAB + isRoot() +
-         MTAB + getBrandInfo() +
-         MTAB + getHostInfo() +
-         MTAB + getTagInfo() +
-         MTAB + getFingerprintInfo();
-         */
         ArrayList<SystemData> systemDatas = new ArrayList<>();
         systemDatas.add(new SystemData("size(hight X width)", getHeight() + " X " + getWidth()));
         systemDatas.add(new SystemData("avail memory", getAvailMemory()));

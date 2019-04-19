@@ -89,21 +89,19 @@ public class NaviActivity extends AppCompatActivity
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                while (true) {
-                    if (isDeviceFragment) {
-                        DeviceCardFragment mdevFragment = deviceCardFragment;
-                        if (mdevFragment != null) {
-                            CollectAllInfo collectAllInfo = new CollectAllInfo(NaviActivity.this);
-                            ArrayList<DeviceData> mdeviceDatas = collectAllInfo.getDeviceDatas();
-                            Message message = new Message();
-                            message.obj = mdeviceDatas;
-                            mHandler.sendMessage(message);
-                        }
-                        Log.w(TAG, "update view");
+                if (isDeviceFragment) {
+                    DeviceCardFragment mdevFragment = deviceCardFragment;
+                    if (mdevFragment != null) {
+                        CollectAllInfo collectAllInfo = new CollectAllInfo(NaviActivity.this);
+                        ArrayList<DeviceData> mdeviceDatas = collectAllInfo.getDeviceDatas();
+                        Message message = new Message();
+                        message.obj = mdeviceDatas;
+                        mHandler.sendMessage(message);
                     }
+                    Log.w(TAG, "update view");
                 }
             }
-        }, 0, 500);
+        }, 0, 1000);
 
         // set toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
